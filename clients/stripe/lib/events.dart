@@ -2,11 +2,6 @@
 
 part of 'models.dart';
 
-sealed class StripeEvent {
-  Map<String, Object?> toJson();
-  V encodeWith<V>(Encoder<V> encoder);
-}
-
 /// Occurs whenever a user authorizes an application. Sent to the related application only.
 final class AccountApplicationAuthorizedEvent implements StripeEvent {
   /// Occurs whenever a user authorizes an application. Sent to the related application only.
@@ -19,6 +14,8 @@ final class AccountApplicationAuthorizedEvent implements StripeEvent {
   }
 
   final Application object;
+
+  final String type = 'account.application.authorized';
 
   Map<String, Object?> toJson() => (encode(
         this,
@@ -33,6 +30,10 @@ final class AccountApplicationAuthorizedEvent implements StripeEvent {
     Application.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'account.application.authorized',
     );
     return container.value;
   }
@@ -49,6 +50,11 @@ final class AccountApplicationAuthorizedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -68,6 +74,8 @@ final class AccountApplicationDeauthorizedEvent implements StripeEvent {
 
   final Application object;
 
+  final String type = 'account.application.deauthorized';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -81,6 +89,10 @@ final class AccountApplicationDeauthorizedEvent implements StripeEvent {
     Application.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'account.application.deauthorized',
     );
     return container.value;
   }
@@ -98,6 +110,11 @@ final class AccountApplicationDeauthorizedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -151,6 +168,8 @@ final class AccountExternalAccountCreatedEvent implements StripeEvent {
 
   final AccountExternalAccountCreatedEventObject object;
 
+  final String type = 'account.external_account.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -164,6 +183,10 @@ final class AccountExternalAccountCreatedEvent implements StripeEvent {
     AccountExternalAccountCreatedEventObject.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'account.external_account.created',
     );
     return container.value;
   }
@@ -180,6 +203,11 @@ final class AccountExternalAccountCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -200,6 +228,8 @@ final class AccountExternalAccountDeletedEvent implements StripeEvent {
 
   final AccountExternalAccountCreatedEventObject object;
 
+  final String type = 'account.external_account.deleted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -213,6 +243,10 @@ final class AccountExternalAccountDeletedEvent implements StripeEvent {
     AccountExternalAccountCreatedEventObject.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'account.external_account.deleted',
     );
     return container.value;
   }
@@ -229,6 +263,11 @@ final class AccountExternalAccountDeletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -249,6 +288,8 @@ final class AccountExternalAccountUpdatedEvent implements StripeEvent {
 
   final AccountExternalAccountCreatedEventObject object;
 
+  final String type = 'account.external_account.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -262,6 +303,10 @@ final class AccountExternalAccountUpdatedEvent implements StripeEvent {
     AccountExternalAccountCreatedEventObject.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'account.external_account.updated',
     );
     return container.value;
   }
@@ -278,6 +323,11 @@ final class AccountExternalAccountUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -296,6 +346,8 @@ final class AccountUpdatedEvent implements StripeEvent {
 
   final Account object;
 
+  final String type = 'account.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -309,6 +361,10 @@ final class AccountUpdatedEvent implements StripeEvent {
     Account.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'account.updated',
     );
     return container.value;
   }
@@ -325,6 +381,11 @@ final class AccountUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -344,6 +405,8 @@ final class ApplicationFeeCreatedEvent implements StripeEvent {
 
   final ApplicationFee object;
 
+  final String type = 'application_fee.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -357,6 +420,10 @@ final class ApplicationFeeCreatedEvent implements StripeEvent {
     ApplicationFee.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'application_fee.created',
     );
     return container.value;
   }
@@ -373,6 +440,11 @@ final class ApplicationFeeCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -392,6 +464,8 @@ final class ApplicationFeeRefundUpdatedEvent implements StripeEvent {
 
   final FeeRefund object;
 
+  final String type = 'application_fee.refund.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -405,6 +479,10 @@ final class ApplicationFeeRefundUpdatedEvent implements StripeEvent {
     FeeRefund.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'application_fee.refund.updated',
     );
     return container.value;
   }
@@ -421,6 +499,11 @@ final class ApplicationFeeRefundUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -440,6 +523,8 @@ final class ApplicationFeeRefundedEvent implements StripeEvent {
 
   final ApplicationFee object;
 
+  final String type = 'application_fee.refunded';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -453,6 +538,10 @@ final class ApplicationFeeRefundedEvent implements StripeEvent {
     ApplicationFee.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'application_fee.refunded',
     );
     return container.value;
   }
@@ -469,6 +558,11 @@ final class ApplicationFeeRefundedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -487,6 +581,8 @@ final class BalanceAvailableEvent implements StripeEvent {
 
   final Balance object;
 
+  final String type = 'balance.available';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -500,6 +596,10 @@ final class BalanceAvailableEvent implements StripeEvent {
     Balance.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'balance.available',
     );
     return container.value;
   }
@@ -516,6 +616,11 @@ final class BalanceAvailableEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -535,6 +640,8 @@ final class BillingPortalConfigurationCreatedEvent implements StripeEvent {
 
   final BillingPortalConfiguration object;
 
+  final String type = 'billing_portal.configuration.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -548,6 +655,10 @@ final class BillingPortalConfigurationCreatedEvent implements StripeEvent {
     BillingPortalConfiguration.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'billing_portal.configuration.created',
     );
     return container.value;
   }
@@ -565,6 +676,11 @@ final class BillingPortalConfigurationCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -584,6 +700,8 @@ final class BillingPortalConfigurationUpdatedEvent implements StripeEvent {
 
   final BillingPortalConfiguration object;
 
+  final String type = 'billing_portal.configuration.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -597,6 +715,10 @@ final class BillingPortalConfigurationUpdatedEvent implements StripeEvent {
     BillingPortalConfiguration.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'billing_portal.configuration.updated',
     );
     return container.value;
   }
@@ -614,6 +736,11 @@ final class BillingPortalConfigurationUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -633,6 +760,8 @@ final class BillingPortalSessionCreatedEvent implements StripeEvent {
 
   final BillingPortalSession object;
 
+  final String type = 'billing_portal.session.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -646,6 +775,10 @@ final class BillingPortalSessionCreatedEvent implements StripeEvent {
     BillingPortalSession.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'billing_portal.session.created',
     );
     return container.value;
   }
@@ -662,6 +795,11 @@ final class BillingPortalSessionCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -680,6 +818,8 @@ final class CapabilityUpdatedEvent implements StripeEvent {
 
   final Capability object;
 
+  final String type = 'capability.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -693,6 +833,10 @@ final class CapabilityUpdatedEvent implements StripeEvent {
     Capability.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'capability.updated',
     );
     return container.value;
   }
@@ -709,6 +853,11 @@ final class CapabilityUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -728,6 +877,8 @@ final class CashBalanceFundsAvailableEvent implements StripeEvent {
 
   final CashBalance object;
 
+  final String type = 'cash_balance.funds_available';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -741,6 +892,10 @@ final class CashBalanceFundsAvailableEvent implements StripeEvent {
     CashBalance.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'cash_balance.funds_available',
     );
     return container.value;
   }
@@ -757,6 +912,11 @@ final class CashBalanceFundsAvailableEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -775,6 +935,8 @@ final class ChargeCapturedEvent implements StripeEvent {
 
   final Charge object;
 
+  final String type = 'charge.captured';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -788,6 +950,10 @@ final class ChargeCapturedEvent implements StripeEvent {
     Charge.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'charge.captured',
     );
     return container.value;
   }
@@ -804,6 +970,11 @@ final class ChargeCapturedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -822,6 +993,8 @@ final class ChargeDisputeClosedEvent implements StripeEvent {
 
   final Dispute object;
 
+  final String type = 'charge.dispute.closed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -835,6 +1008,10 @@ final class ChargeDisputeClosedEvent implements StripeEvent {
     Dispute.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'charge.dispute.closed',
     );
     return container.value;
   }
@@ -851,6 +1028,11 @@ final class ChargeDisputeClosedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -869,6 +1051,8 @@ final class ChargeDisputeCreatedEvent implements StripeEvent {
 
   final Dispute object;
 
+  final String type = 'charge.dispute.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -882,6 +1066,10 @@ final class ChargeDisputeCreatedEvent implements StripeEvent {
     Dispute.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'charge.dispute.created',
     );
     return container.value;
   }
@@ -898,6 +1086,11 @@ final class ChargeDisputeCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -917,6 +1110,8 @@ final class ChargeDisputeFundsReinstatedEvent implements StripeEvent {
 
   final Dispute object;
 
+  final String type = 'charge.dispute.funds_reinstated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -930,6 +1125,10 @@ final class ChargeDisputeFundsReinstatedEvent implements StripeEvent {
     Dispute.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'charge.dispute.funds_reinstated',
     );
     return container.value;
   }
@@ -946,6 +1145,11 @@ final class ChargeDisputeFundsReinstatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -965,6 +1169,8 @@ final class ChargeDisputeFundsWithdrawnEvent implements StripeEvent {
 
   final Dispute object;
 
+  final String type = 'charge.dispute.funds_withdrawn';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -978,6 +1184,10 @@ final class ChargeDisputeFundsWithdrawnEvent implements StripeEvent {
     Dispute.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'charge.dispute.funds_withdrawn',
     );
     return container.value;
   }
@@ -994,6 +1204,11 @@ final class ChargeDisputeFundsWithdrawnEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1012,6 +1227,8 @@ final class ChargeDisputeUpdatedEvent implements StripeEvent {
 
   final Dispute object;
 
+  final String type = 'charge.dispute.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1025,6 +1242,10 @@ final class ChargeDisputeUpdatedEvent implements StripeEvent {
     Dispute.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'charge.dispute.updated',
     );
     return container.value;
   }
@@ -1041,6 +1262,11 @@ final class ChargeDisputeUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1059,6 +1285,8 @@ final class ChargeExpiredEvent implements StripeEvent {
 
   final Charge object;
 
+  final String type = 'charge.expired';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1072,6 +1300,10 @@ final class ChargeExpiredEvent implements StripeEvent {
     Charge.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'charge.expired',
     );
     return container.value;
   }
@@ -1088,6 +1320,11 @@ final class ChargeExpiredEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1106,6 +1343,8 @@ final class ChargeFailedEvent implements StripeEvent {
 
   final Charge object;
 
+  final String type = 'charge.failed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1119,6 +1358,10 @@ final class ChargeFailedEvent implements StripeEvent {
     Charge.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'charge.failed',
     );
     return container.value;
   }
@@ -1135,6 +1378,11 @@ final class ChargeFailedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1153,6 +1401,8 @@ final class ChargePendingEvent implements StripeEvent {
 
   final Charge object;
 
+  final String type = 'charge.pending';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1166,6 +1416,10 @@ final class ChargePendingEvent implements StripeEvent {
     Charge.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'charge.pending',
     );
     return container.value;
   }
@@ -1182,6 +1436,11 @@ final class ChargePendingEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1200,6 +1459,8 @@ final class ChargeRefundUpdatedEvent implements StripeEvent {
 
   final Refund object;
 
+  final String type = 'charge.refund.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1213,6 +1474,10 @@ final class ChargeRefundUpdatedEvent implements StripeEvent {
     Refund.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'charge.refund.updated',
     );
     return container.value;
   }
@@ -1229,6 +1494,11 @@ final class ChargeRefundUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1247,6 +1517,8 @@ final class ChargeRefundedEvent implements StripeEvent {
 
   final Charge object;
 
+  final String type = 'charge.refunded';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1260,6 +1532,10 @@ final class ChargeRefundedEvent implements StripeEvent {
     Charge.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'charge.refunded',
     );
     return container.value;
   }
@@ -1276,6 +1552,11 @@ final class ChargeRefundedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1294,6 +1575,8 @@ final class ChargeSucceededEvent implements StripeEvent {
 
   final Charge object;
 
+  final String type = 'charge.succeeded';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1307,6 +1590,10 @@ final class ChargeSucceededEvent implements StripeEvent {
     Charge.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'charge.succeeded',
     );
     return container.value;
   }
@@ -1323,6 +1610,11 @@ final class ChargeSucceededEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1341,6 +1633,8 @@ final class ChargeUpdatedEvent implements StripeEvent {
 
   final Charge object;
 
+  final String type = 'charge.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1354,6 +1648,10 @@ final class ChargeUpdatedEvent implements StripeEvent {
     Charge.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'charge.updated',
     );
     return container.value;
   }
@@ -1370,6 +1668,11 @@ final class ChargeUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1389,6 +1692,8 @@ final class CheckoutSessionAsyncPaymentFailedEvent implements StripeEvent {
 
   final CheckoutSession object;
 
+  final String type = 'checkout.session.async_payment_failed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1402,6 +1707,10 @@ final class CheckoutSessionAsyncPaymentFailedEvent implements StripeEvent {
     CheckoutSession.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'checkout.session.async_payment_failed',
     );
     return container.value;
   }
@@ -1419,6 +1728,11 @@ final class CheckoutSessionAsyncPaymentFailedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1438,6 +1752,8 @@ final class CheckoutSessionAsyncPaymentSucceededEvent implements StripeEvent {
 
   final CheckoutSession object;
 
+  final String type = 'checkout.session.async_payment_succeeded';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1451,6 +1767,10 @@ final class CheckoutSessionAsyncPaymentSucceededEvent implements StripeEvent {
     CheckoutSession.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'checkout.session.async_payment_succeeded',
     );
     return container.value;
   }
@@ -1468,6 +1788,11 @@ final class CheckoutSessionAsyncPaymentSucceededEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1487,6 +1812,8 @@ final class CheckoutSessionCompletedEvent implements StripeEvent {
 
   final CheckoutSession object;
 
+  final String type = 'checkout.session.completed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1500,6 +1827,10 @@ final class CheckoutSessionCompletedEvent implements StripeEvent {
     CheckoutSession.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'checkout.session.completed',
     );
     return container.value;
   }
@@ -1516,6 +1847,11 @@ final class CheckoutSessionCompletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1535,6 +1871,8 @@ final class CheckoutSessionExpiredEvent implements StripeEvent {
 
   final CheckoutSession object;
 
+  final String type = 'checkout.session.expired';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1548,6 +1886,10 @@ final class CheckoutSessionExpiredEvent implements StripeEvent {
     CheckoutSession.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'checkout.session.expired',
     );
     return container.value;
   }
@@ -1564,6 +1906,11 @@ final class CheckoutSessionExpiredEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1583,6 +1930,8 @@ final class ClimateOrderCanceledEvent implements StripeEvent {
 
   final ClimateOrder object;
 
+  final String type = 'climate.order.canceled';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1596,6 +1945,10 @@ final class ClimateOrderCanceledEvent implements StripeEvent {
     ClimateOrder.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'climate.order.canceled',
     );
     return container.value;
   }
@@ -1612,6 +1965,11 @@ final class ClimateOrderCanceledEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1631,6 +1989,8 @@ final class ClimateOrderCreatedEvent implements StripeEvent {
 
   final ClimateOrder object;
 
+  final String type = 'climate.order.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1644,6 +2004,10 @@ final class ClimateOrderCreatedEvent implements StripeEvent {
     ClimateOrder.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'climate.order.created',
     );
     return container.value;
   }
@@ -1660,6 +2024,11 @@ final class ClimateOrderCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1679,6 +2048,8 @@ final class ClimateOrderDelayedEvent implements StripeEvent {
 
   final ClimateOrder object;
 
+  final String type = 'climate.order.delayed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1692,6 +2063,10 @@ final class ClimateOrderDelayedEvent implements StripeEvent {
     ClimateOrder.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'climate.order.delayed',
     );
     return container.value;
   }
@@ -1708,6 +2083,11 @@ final class ClimateOrderDelayedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1727,6 +2107,8 @@ final class ClimateOrderDeliveredEvent implements StripeEvent {
 
   final ClimateOrder object;
 
+  final String type = 'climate.order.delivered';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1740,6 +2122,10 @@ final class ClimateOrderDeliveredEvent implements StripeEvent {
     ClimateOrder.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'climate.order.delivered',
     );
     return container.value;
   }
@@ -1756,6 +2142,11 @@ final class ClimateOrderDeliveredEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1775,6 +2166,8 @@ final class ClimateOrderProductSubstitutedEvent implements StripeEvent {
 
   final ClimateOrder object;
 
+  final String type = 'climate.order.product_substituted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1788,6 +2181,10 @@ final class ClimateOrderProductSubstitutedEvent implements StripeEvent {
     ClimateOrder.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'climate.order.product_substituted',
     );
     return container.value;
   }
@@ -1805,6 +2202,11 @@ final class ClimateOrderProductSubstitutedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1824,6 +2226,8 @@ final class ClimateProductCreatedEvent implements StripeEvent {
 
   final ClimateProduct object;
 
+  final String type = 'climate.product.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1837,6 +2241,10 @@ final class ClimateProductCreatedEvent implements StripeEvent {
     ClimateProduct.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'climate.product.created',
     );
     return container.value;
   }
@@ -1853,6 +2261,11 @@ final class ClimateProductCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1872,6 +2285,8 @@ final class ClimateProductPricingUpdatedEvent implements StripeEvent {
 
   final ClimateProduct object;
 
+  final String type = 'climate.product.pricing_updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1885,6 +2300,10 @@ final class ClimateProductPricingUpdatedEvent implements StripeEvent {
     ClimateProduct.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'climate.product.pricing_updated',
     );
     return container.value;
   }
@@ -1901,6 +2320,11 @@ final class ClimateProductPricingUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1919,6 +2343,8 @@ final class CouponCreatedEvent implements StripeEvent {
 
   final Coupon object;
 
+  final String type = 'coupon.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1932,6 +2358,10 @@ final class CouponCreatedEvent implements StripeEvent {
     Coupon.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'coupon.created',
     );
     return container.value;
   }
@@ -1948,6 +2378,11 @@ final class CouponCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -1966,6 +2401,8 @@ final class CouponDeletedEvent implements StripeEvent {
 
   final Coupon object;
 
+  final String type = 'coupon.deleted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -1979,6 +2416,10 @@ final class CouponDeletedEvent implements StripeEvent {
     Coupon.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'coupon.deleted',
     );
     return container.value;
   }
@@ -1995,6 +2436,11 @@ final class CouponDeletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2013,6 +2459,8 @@ final class CouponUpdatedEvent implements StripeEvent {
 
   final Coupon object;
 
+  final String type = 'coupon.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2026,6 +2474,10 @@ final class CouponUpdatedEvent implements StripeEvent {
     Coupon.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'coupon.updated',
     );
     return container.value;
   }
@@ -2042,6 +2494,11 @@ final class CouponUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2060,6 +2517,8 @@ final class CreditNoteCreatedEvent implements StripeEvent {
 
   final CreditNote object;
 
+  final String type = 'credit_note.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2073,6 +2532,10 @@ final class CreditNoteCreatedEvent implements StripeEvent {
     CreditNote.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'credit_note.created',
     );
     return container.value;
   }
@@ -2089,6 +2552,11 @@ final class CreditNoteCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2107,6 +2575,8 @@ final class CreditNoteUpdatedEvent implements StripeEvent {
 
   final CreditNote object;
 
+  final String type = 'credit_note.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2120,6 +2590,10 @@ final class CreditNoteUpdatedEvent implements StripeEvent {
     CreditNote.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'credit_note.updated',
     );
     return container.value;
   }
@@ -2136,6 +2610,11 @@ final class CreditNoteUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2154,6 +2633,8 @@ final class CreditNoteVoidedEvent implements StripeEvent {
 
   final CreditNote object;
 
+  final String type = 'credit_note.voided';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2167,6 +2648,10 @@ final class CreditNoteVoidedEvent implements StripeEvent {
     CreditNote.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'credit_note.voided',
     );
     return container.value;
   }
@@ -2183,6 +2668,11 @@ final class CreditNoteVoidedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2201,6 +2691,8 @@ final class CustomerCreatedEvent implements StripeEvent {
 
   final Customer object;
 
+  final String type = 'customer.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2214,6 +2706,10 @@ final class CustomerCreatedEvent implements StripeEvent {
     Customer.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.created',
     );
     return container.value;
   }
@@ -2230,6 +2726,11 @@ final class CustomerCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2248,6 +2749,8 @@ final class CustomerDeletedEvent implements StripeEvent {
 
   final Customer object;
 
+  final String type = 'customer.deleted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2261,6 +2764,10 @@ final class CustomerDeletedEvent implements StripeEvent {
     Customer.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.deleted',
     );
     return container.value;
   }
@@ -2277,6 +2784,11 @@ final class CustomerDeletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2296,6 +2808,8 @@ final class CustomerDiscountCreatedEvent implements StripeEvent {
 
   final Discount object;
 
+  final String type = 'customer.discount.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2309,6 +2823,10 @@ final class CustomerDiscountCreatedEvent implements StripeEvent {
     Discount.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.discount.created',
     );
     return container.value;
   }
@@ -2325,6 +2843,11 @@ final class CustomerDiscountCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2344,6 +2867,8 @@ final class CustomerDiscountDeletedEvent implements StripeEvent {
 
   final Discount object;
 
+  final String type = 'customer.discount.deleted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2357,6 +2882,10 @@ final class CustomerDiscountDeletedEvent implements StripeEvent {
     Discount.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.discount.deleted',
     );
     return container.value;
   }
@@ -2373,6 +2902,11 @@ final class CustomerDiscountDeletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2392,6 +2926,8 @@ final class CustomerDiscountUpdatedEvent implements StripeEvent {
 
   final Discount object;
 
+  final String type = 'customer.discount.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2405,6 +2941,10 @@ final class CustomerDiscountUpdatedEvent implements StripeEvent {
     Discount.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.discount.updated',
     );
     return container.value;
   }
@@ -2421,6 +2961,11 @@ final class CustomerDiscountUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2441,6 +2986,8 @@ final class CustomerSourceCreatedEvent implements StripeEvent {
 
   final AccountExternalAccountCreatedEventObject object;
 
+  final String type = 'customer.source.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2454,6 +3001,10 @@ final class CustomerSourceCreatedEvent implements StripeEvent {
     AccountExternalAccountCreatedEventObject.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.source.created',
     );
     return container.value;
   }
@@ -2470,6 +3021,11 @@ final class CustomerSourceCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2490,6 +3046,8 @@ final class CustomerSourceDeletedEvent implements StripeEvent {
 
   final AccountExternalAccountCreatedEventObject object;
 
+  final String type = 'customer.source.deleted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2503,6 +3061,10 @@ final class CustomerSourceDeletedEvent implements StripeEvent {
     AccountExternalAccountCreatedEventObject.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.source.deleted',
     );
     return container.value;
   }
@@ -2519,6 +3081,11 @@ final class CustomerSourceDeletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2570,6 +3137,8 @@ final class CustomerSourceExpiringEvent implements StripeEvent {
 
   final CustomerSourceExpiringEventObject object;
 
+  final String type = 'customer.source.expiring';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2583,6 +3152,10 @@ final class CustomerSourceExpiringEvent implements StripeEvent {
     CustomerSourceExpiringEventObject.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.source.expiring',
     );
     return container.value;
   }
@@ -2599,6 +3172,11 @@ final class CustomerSourceExpiringEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2619,6 +3197,8 @@ final class CustomerSourceUpdatedEvent implements StripeEvent {
 
   final AccountExternalAccountCreatedEventObject object;
 
+  final String type = 'customer.source.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2632,6 +3212,10 @@ final class CustomerSourceUpdatedEvent implements StripeEvent {
     AccountExternalAccountCreatedEventObject.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.source.updated',
     );
     return container.value;
   }
@@ -2648,6 +3232,11 @@ final class CustomerSourceUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2667,6 +3256,8 @@ final class CustomerSubscriptionCreatedEvent implements StripeEvent {
 
   final Subscription object;
 
+  final String type = 'customer.subscription.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2680,6 +3271,10 @@ final class CustomerSubscriptionCreatedEvent implements StripeEvent {
     Subscription.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.subscription.created',
     );
     return container.value;
   }
@@ -2696,6 +3291,11 @@ final class CustomerSubscriptionCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2715,6 +3315,8 @@ final class CustomerSubscriptionDeletedEvent implements StripeEvent {
 
   final Subscription object;
 
+  final String type = 'customer.subscription.deleted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2728,6 +3330,10 @@ final class CustomerSubscriptionDeletedEvent implements StripeEvent {
     Subscription.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.subscription.deleted',
     );
     return container.value;
   }
@@ -2744,6 +3350,11 @@ final class CustomerSubscriptionDeletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2763,6 +3374,8 @@ final class CustomerSubscriptionPausedEvent implements StripeEvent {
 
   final Subscription object;
 
+  final String type = 'customer.subscription.paused';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2776,6 +3389,10 @@ final class CustomerSubscriptionPausedEvent implements StripeEvent {
     Subscription.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.subscription.paused',
     );
     return container.value;
   }
@@ -2792,6 +3409,11 @@ final class CustomerSubscriptionPausedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2812,6 +3434,8 @@ final class CustomerSubscriptionPendingUpdateAppliedEvent
 
   final Subscription object;
 
+  final String type = 'customer.subscription.pending_update_applied';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2825,6 +3449,10 @@ final class CustomerSubscriptionPendingUpdateAppliedEvent
     Subscription.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.subscription.pending_update_applied',
     );
     return container.value;
   }
@@ -2842,6 +3470,11 @@ final class CustomerSubscriptionPendingUpdateAppliedEvent
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2862,6 +3495,8 @@ final class CustomerSubscriptionPendingUpdateExpiredEvent
 
   final Subscription object;
 
+  final String type = 'customer.subscription.pending_update_expired';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2875,6 +3510,10 @@ final class CustomerSubscriptionPendingUpdateExpiredEvent
     Subscription.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.subscription.pending_update_expired',
     );
     return container.value;
   }
@@ -2892,6 +3531,11 @@ final class CustomerSubscriptionPendingUpdateExpiredEvent
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2911,6 +3555,8 @@ final class CustomerSubscriptionResumedEvent implements StripeEvent {
 
   final Subscription object;
 
+  final String type = 'customer.subscription.resumed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2924,6 +3570,10 @@ final class CustomerSubscriptionResumedEvent implements StripeEvent {
     Subscription.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.subscription.resumed',
     );
     return container.value;
   }
@@ -2940,6 +3590,11 @@ final class CustomerSubscriptionResumedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -2959,6 +3614,8 @@ final class CustomerSubscriptionTrialWillEndEvent implements StripeEvent {
 
   final Subscription object;
 
+  final String type = 'customer.subscription.trial_will_end';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -2972,6 +3629,10 @@ final class CustomerSubscriptionTrialWillEndEvent implements StripeEvent {
     Subscription.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.subscription.trial_will_end',
     );
     return container.value;
   }
@@ -2989,6 +3650,11 @@ final class CustomerSubscriptionTrialWillEndEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3008,6 +3674,8 @@ final class CustomerSubscriptionUpdatedEvent implements StripeEvent {
 
   final Subscription object;
 
+  final String type = 'customer.subscription.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3021,6 +3689,10 @@ final class CustomerSubscriptionUpdatedEvent implements StripeEvent {
     Subscription.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.subscription.updated',
     );
     return container.value;
   }
@@ -3037,6 +3709,11 @@ final class CustomerSubscriptionUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3055,6 +3732,8 @@ final class CustomerTaxIdCreatedEvent implements StripeEvent {
 
   final TaxId object;
 
+  final String type = 'customer.tax_id.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3068,6 +3747,10 @@ final class CustomerTaxIdCreatedEvent implements StripeEvent {
     TaxId.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.tax_id.created',
     );
     return container.value;
   }
@@ -3084,6 +3767,11 @@ final class CustomerTaxIdCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3102,6 +3790,8 @@ final class CustomerTaxIdDeletedEvent implements StripeEvent {
 
   final TaxId object;
 
+  final String type = 'customer.tax_id.deleted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3115,6 +3805,10 @@ final class CustomerTaxIdDeletedEvent implements StripeEvent {
     TaxId.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.tax_id.deleted',
     );
     return container.value;
   }
@@ -3131,6 +3825,11 @@ final class CustomerTaxIdDeletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3149,6 +3848,8 @@ final class CustomerTaxIdUpdatedEvent implements StripeEvent {
 
   final TaxId object;
 
+  final String type = 'customer.tax_id.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3162,6 +3863,10 @@ final class CustomerTaxIdUpdatedEvent implements StripeEvent {
     TaxId.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.tax_id.updated',
     );
     return container.value;
   }
@@ -3178,6 +3883,11 @@ final class CustomerTaxIdUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3196,6 +3906,8 @@ final class CustomerUpdatedEvent implements StripeEvent {
 
   final Customer object;
 
+  final String type = 'customer.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3209,6 +3921,10 @@ final class CustomerUpdatedEvent implements StripeEvent {
     Customer.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer.updated',
     );
     return container.value;
   }
@@ -3225,6 +3941,11 @@ final class CustomerUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3244,6 +3965,8 @@ final class CustomerCashBalanceTransactionCreatedEvent implements StripeEvent {
 
   final CustomerCashBalanceTransaction object;
 
+  final String type = 'customer_cash_balance_transaction.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3257,6 +3980,10 @@ final class CustomerCashBalanceTransactionCreatedEvent implements StripeEvent {
     CustomerCashBalanceTransaction.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'customer_cash_balance_transaction.created',
     );
     return container.value;
   }
@@ -3275,6 +4002,11 @@ final class CustomerCashBalanceTransactionCreatedEvent implements StripeEvent {
       ..write('  object: ')
       ..write(object)
       ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
+      ..write(',');
     $buf.write(')');
     return $buf.toString();
   }
@@ -3292,6 +4024,8 @@ final class FileCreatedEvent implements StripeEvent {
 
   final File object;
 
+  final String type = 'file.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3305,6 +4039,10 @@ final class FileCreatedEvent implements StripeEvent {
     File.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'file.created',
     );
     return container.value;
   }
@@ -3321,6 +4059,11 @@ final class FileCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3340,6 +4083,8 @@ final class FinancialConnectionsAccountCreatedEvent implements StripeEvent {
 
   final FinancialConnectionsAccount object;
 
+  final String type = 'financial_connections.account.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3353,6 +4098,10 @@ final class FinancialConnectionsAccountCreatedEvent implements StripeEvent {
     FinancialConnectionsAccount.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'financial_connections.account.created',
     );
     return container.value;
   }
@@ -3370,6 +4119,11 @@ final class FinancialConnectionsAccountCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3389,6 +4143,8 @@ final class FinancialConnectionsAccountDeactivatedEvent implements StripeEvent {
 
   final FinancialConnectionsAccount object;
 
+  final String type = 'financial_connections.account.deactivated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3402,6 +4158,10 @@ final class FinancialConnectionsAccountDeactivatedEvent implements StripeEvent {
     FinancialConnectionsAccount.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'financial_connections.account.deactivated',
     );
     return container.value;
   }
@@ -3419,6 +4179,11 @@ final class FinancialConnectionsAccountDeactivatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3439,6 +4204,8 @@ final class FinancialConnectionsAccountDisconnectedEvent
 
   final FinancialConnectionsAccount object;
 
+  final String type = 'financial_connections.account.disconnected';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3452,6 +4219,10 @@ final class FinancialConnectionsAccountDisconnectedEvent
     FinancialConnectionsAccount.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'financial_connections.account.disconnected',
     );
     return container.value;
   }
@@ -3469,6 +4240,11 @@ final class FinancialConnectionsAccountDisconnectedEvent
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3488,6 +4264,8 @@ final class FinancialConnectionsAccountReactivatedEvent implements StripeEvent {
 
   final FinancialConnectionsAccount object;
 
+  final String type = 'financial_connections.account.reactivated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3501,6 +4279,10 @@ final class FinancialConnectionsAccountReactivatedEvent implements StripeEvent {
     FinancialConnectionsAccount.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'financial_connections.account.reactivated',
     );
     return container.value;
   }
@@ -3518,6 +4300,11 @@ final class FinancialConnectionsAccountReactivatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3540,6 +4327,8 @@ final class FinancialConnectionsAccountRefreshedBalanceEvent
 
   final FinancialConnectionsAccount object;
 
+  final String type = 'financial_connections.account.refreshed_balance';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3553,6 +4342,10 @@ final class FinancialConnectionsAccountRefreshedBalanceEvent
     FinancialConnectionsAccount.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'financial_connections.account.refreshed_balance',
     );
     return container.value;
   }
@@ -3570,6 +4363,11 @@ final class FinancialConnectionsAccountRefreshedBalanceEvent
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3592,6 +4390,8 @@ final class FinancialConnectionsAccountRefreshedOwnershipEvent
 
   final FinancialConnectionsAccount object;
 
+  final String type = 'financial_connections.account.refreshed_ownership';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3605,6 +4405,10 @@ final class FinancialConnectionsAccountRefreshedOwnershipEvent
     FinancialConnectionsAccount.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'financial_connections.account.refreshed_ownership',
     );
     return container.value;
   }
@@ -3622,6 +4426,11 @@ final class FinancialConnectionsAccountRefreshedOwnershipEvent
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3644,6 +4453,8 @@ final class FinancialConnectionsAccountRefreshedTransactionsEvent
 
   final FinancialConnectionsAccount object;
 
+  final String type = 'financial_connections.account.refreshed_transactions';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3657,6 +4468,10 @@ final class FinancialConnectionsAccountRefreshedTransactionsEvent
     FinancialConnectionsAccount.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'financial_connections.account.refreshed_transactions',
     );
     return container.value;
   }
@@ -3674,6 +4489,11 @@ final class FinancialConnectionsAccountRefreshedTransactionsEvent
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3693,6 +4513,8 @@ final class IdentityVerificationSessionCanceledEvent implements StripeEvent {
 
   final IdentityVerificationSession object;
 
+  final String type = 'identity.verification_session.canceled';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3706,6 +4528,10 @@ final class IdentityVerificationSessionCanceledEvent implements StripeEvent {
     IdentityVerificationSession.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'identity.verification_session.canceled',
     );
     return container.value;
   }
@@ -3723,6 +4549,11 @@ final class IdentityVerificationSessionCanceledEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3742,6 +4573,8 @@ final class IdentityVerificationSessionCreatedEvent implements StripeEvent {
 
   final IdentityVerificationSession object;
 
+  final String type = 'identity.verification_session.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3755,6 +4588,10 @@ final class IdentityVerificationSessionCreatedEvent implements StripeEvent {
     IdentityVerificationSession.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'identity.verification_session.created',
     );
     return container.value;
   }
@@ -3772,6 +4609,11 @@ final class IdentityVerificationSessionCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3791,6 +4633,8 @@ final class IdentityVerificationSessionProcessingEvent implements StripeEvent {
 
   final IdentityVerificationSession object;
 
+  final String type = 'identity.verification_session.processing';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3804,6 +4648,10 @@ final class IdentityVerificationSessionProcessingEvent implements StripeEvent {
     IdentityVerificationSession.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'identity.verification_session.processing',
     );
     return container.value;
   }
@@ -3821,6 +4669,11 @@ final class IdentityVerificationSessionProcessingEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3840,6 +4693,8 @@ final class IdentityVerificationSessionRedactedEvent implements StripeEvent {
 
   final IdentityVerificationSession object;
 
+  final String type = 'identity.verification_session.redacted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3853,6 +4708,10 @@ final class IdentityVerificationSessionRedactedEvent implements StripeEvent {
     IdentityVerificationSession.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'identity.verification_session.redacted',
     );
     return container.value;
   }
@@ -3870,6 +4729,11 @@ final class IdentityVerificationSessionRedactedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3890,6 +4754,8 @@ final class IdentityVerificationSessionRequiresInputEvent
 
   final IdentityVerificationSession object;
 
+  final String type = 'identity.verification_session.requires_input';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3903,6 +4769,10 @@ final class IdentityVerificationSessionRequiresInputEvent
     IdentityVerificationSession.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'identity.verification_session.requires_input',
     );
     return container.value;
   }
@@ -3920,6 +4790,11 @@ final class IdentityVerificationSessionRequiresInputEvent
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -3939,6 +4814,8 @@ final class IdentityVerificationSessionVerifiedEvent implements StripeEvent {
 
   final IdentityVerificationSession object;
 
+  final String type = 'identity.verification_session.verified';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -3952,6 +4829,10 @@ final class IdentityVerificationSessionVerifiedEvent implements StripeEvent {
     IdentityVerificationSession.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'identity.verification_session.verified',
     );
     return container.value;
   }
@@ -3970,6 +4851,11 @@ final class IdentityVerificationSessionVerifiedEvent implements StripeEvent {
       ..write('  object: ')
       ..write(object)
       ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
+      ..write(',');
     $buf.write(')');
     return $buf.toString();
   }
@@ -3987,6 +4873,8 @@ final class InvoiceCreatedEvent implements StripeEvent {
 
   final Invoice object;
 
+  final String type = 'invoice.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4000,6 +4888,10 @@ final class InvoiceCreatedEvent implements StripeEvent {
     Invoice.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'invoice.created',
     );
     return container.value;
   }
@@ -4016,6 +4908,11 @@ final class InvoiceCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4034,6 +4931,8 @@ final class InvoiceDeletedEvent implements StripeEvent {
 
   final Invoice object;
 
+  final String type = 'invoice.deleted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4047,6 +4946,10 @@ final class InvoiceDeletedEvent implements StripeEvent {
     Invoice.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'invoice.deleted',
     );
     return container.value;
   }
@@ -4063,6 +4966,11 @@ final class InvoiceDeletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4082,6 +4990,8 @@ final class InvoiceFinalizationFailedEvent implements StripeEvent {
 
   final Invoice object;
 
+  final String type = 'invoice.finalization_failed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4095,6 +5005,10 @@ final class InvoiceFinalizationFailedEvent implements StripeEvent {
     Invoice.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'invoice.finalization_failed',
     );
     return container.value;
   }
@@ -4111,6 +5025,11 @@ final class InvoiceFinalizationFailedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4129,6 +5048,8 @@ final class InvoiceFinalizedEvent implements StripeEvent {
 
   final Invoice object;
 
+  final String type = 'invoice.finalized';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4142,6 +5063,10 @@ final class InvoiceFinalizedEvent implements StripeEvent {
     Invoice.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'invoice.finalized',
     );
     return container.value;
   }
@@ -4158,6 +5083,11 @@ final class InvoiceFinalizedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4177,6 +5107,8 @@ final class InvoiceMarkedUncollectibleEvent implements StripeEvent {
 
   final Invoice object;
 
+  final String type = 'invoice.marked_uncollectible';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4190,6 +5122,10 @@ final class InvoiceMarkedUncollectibleEvent implements StripeEvent {
     Invoice.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'invoice.marked_uncollectible',
     );
     return container.value;
   }
@@ -4206,6 +5142,11 @@ final class InvoiceMarkedUncollectibleEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4224,6 +5165,8 @@ final class InvoicePaidEvent implements StripeEvent {
 
   final Invoice object;
 
+  final String type = 'invoice.paid';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4237,6 +5180,10 @@ final class InvoicePaidEvent implements StripeEvent {
     Invoice.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'invoice.paid',
     );
     return container.value;
   }
@@ -4253,6 +5200,11 @@ final class InvoicePaidEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4272,6 +5224,8 @@ final class InvoicePaymentActionRequiredEvent implements StripeEvent {
 
   final Invoice object;
 
+  final String type = 'invoice.payment_action_required';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4285,6 +5239,10 @@ final class InvoicePaymentActionRequiredEvent implements StripeEvent {
     Invoice.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'invoice.payment_action_required',
     );
     return container.value;
   }
@@ -4301,6 +5259,11 @@ final class InvoicePaymentActionRequiredEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4319,6 +5282,8 @@ final class InvoicePaymentFailedEvent implements StripeEvent {
 
   final Invoice object;
 
+  final String type = 'invoice.payment_failed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4332,6 +5297,10 @@ final class InvoicePaymentFailedEvent implements StripeEvent {
     Invoice.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'invoice.payment_failed',
     );
     return container.value;
   }
@@ -4348,6 +5317,11 @@ final class InvoicePaymentFailedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4367,6 +5341,8 @@ final class InvoicePaymentSucceededEvent implements StripeEvent {
 
   final Invoice object;
 
+  final String type = 'invoice.payment_succeeded';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4380,6 +5356,10 @@ final class InvoicePaymentSucceededEvent implements StripeEvent {
     Invoice.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'invoice.payment_succeeded',
     );
     return container.value;
   }
@@ -4396,6 +5376,11 @@ final class InvoicePaymentSucceededEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4414,6 +5399,8 @@ final class InvoiceSentEvent implements StripeEvent {
 
   final Invoice object;
 
+  final String type = 'invoice.sent';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4427,6 +5414,10 @@ final class InvoiceSentEvent implements StripeEvent {
     Invoice.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'invoice.sent',
     );
     return container.value;
   }
@@ -4443,6 +5434,11 @@ final class InvoiceSentEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4461,6 +5457,8 @@ final class InvoiceUpcomingEvent implements StripeEvent {
 
   final Invoice object;
 
+  final String type = 'invoice.upcoming';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4474,6 +5472,10 @@ final class InvoiceUpcomingEvent implements StripeEvent {
     Invoice.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'invoice.upcoming',
     );
     return container.value;
   }
@@ -4490,6 +5492,11 @@ final class InvoiceUpcomingEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4508,6 +5515,8 @@ final class InvoiceUpdatedEvent implements StripeEvent {
 
   final Invoice object;
 
+  final String type = 'invoice.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4521,6 +5530,10 @@ final class InvoiceUpdatedEvent implements StripeEvent {
     Invoice.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'invoice.updated',
     );
     return container.value;
   }
@@ -4537,6 +5550,11 @@ final class InvoiceUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4555,6 +5573,8 @@ final class InvoiceVoidedEvent implements StripeEvent {
 
   final Invoice object;
 
+  final String type = 'invoice.voided';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4568,6 +5588,10 @@ final class InvoiceVoidedEvent implements StripeEvent {
     Invoice.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'invoice.voided',
     );
     return container.value;
   }
@@ -4584,6 +5608,11 @@ final class InvoiceVoidedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4602,6 +5631,8 @@ final class InvoiceitemCreatedEvent implements StripeEvent {
 
   final Invoiceitem object;
 
+  final String type = 'invoiceitem.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4615,6 +5646,10 @@ final class InvoiceitemCreatedEvent implements StripeEvent {
     Invoiceitem.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'invoiceitem.created',
     );
     return container.value;
   }
@@ -4631,6 +5666,11 @@ final class InvoiceitemCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4649,6 +5689,8 @@ final class InvoiceitemDeletedEvent implements StripeEvent {
 
   final Invoiceitem object;
 
+  final String type = 'invoiceitem.deleted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4662,6 +5704,10 @@ final class InvoiceitemDeletedEvent implements StripeEvent {
     Invoiceitem.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'invoiceitem.deleted',
     );
     return container.value;
   }
@@ -4678,6 +5724,11 @@ final class InvoiceitemDeletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4697,6 +5748,8 @@ final class IssuingAuthorizationCreatedEvent implements StripeEvent {
 
   final IssuingAuthorization object;
 
+  final String type = 'issuing_authorization.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4710,6 +5763,10 @@ final class IssuingAuthorizationCreatedEvent implements StripeEvent {
     IssuingAuthorization.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'issuing_authorization.created',
     );
     return container.value;
   }
@@ -4726,6 +5783,11 @@ final class IssuingAuthorizationCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4745,6 +5807,8 @@ final class IssuingAuthorizationRequestEvent implements StripeEvent {
 
   final IssuingAuthorization object;
 
+  final String type = 'issuing_authorization.request';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4758,6 +5822,10 @@ final class IssuingAuthorizationRequestEvent implements StripeEvent {
     IssuingAuthorization.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'issuing_authorization.request',
     );
     return container.value;
   }
@@ -4774,6 +5842,11 @@ final class IssuingAuthorizationRequestEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4793,6 +5866,8 @@ final class IssuingAuthorizationUpdatedEvent implements StripeEvent {
 
   final IssuingAuthorization object;
 
+  final String type = 'issuing_authorization.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4806,6 +5881,10 @@ final class IssuingAuthorizationUpdatedEvent implements StripeEvent {
     IssuingAuthorization.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'issuing_authorization.updated',
     );
     return container.value;
   }
@@ -4822,6 +5901,11 @@ final class IssuingAuthorizationUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4840,6 +5924,8 @@ final class IssuingCardCreatedEvent implements StripeEvent {
 
   final IssuingCard object;
 
+  final String type = 'issuing_card.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4853,6 +5939,10 @@ final class IssuingCardCreatedEvent implements StripeEvent {
     IssuingCard.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'issuing_card.created',
     );
     return container.value;
   }
@@ -4869,6 +5959,11 @@ final class IssuingCardCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4887,6 +5982,8 @@ final class IssuingCardUpdatedEvent implements StripeEvent {
 
   final IssuingCard object;
 
+  final String type = 'issuing_card.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4900,6 +5997,10 @@ final class IssuingCardUpdatedEvent implements StripeEvent {
     IssuingCard.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'issuing_card.updated',
     );
     return container.value;
   }
@@ -4916,6 +6017,11 @@ final class IssuingCardUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4935,6 +6041,8 @@ final class IssuingCardholderCreatedEvent implements StripeEvent {
 
   final IssuingCardholder object;
 
+  final String type = 'issuing_cardholder.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4948,6 +6056,10 @@ final class IssuingCardholderCreatedEvent implements StripeEvent {
     IssuingCardholder.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'issuing_cardholder.created',
     );
     return container.value;
   }
@@ -4964,6 +6076,11 @@ final class IssuingCardholderCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -4983,6 +6100,8 @@ final class IssuingCardholderUpdatedEvent implements StripeEvent {
 
   final IssuingCardholder object;
 
+  final String type = 'issuing_cardholder.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -4996,6 +6115,10 @@ final class IssuingCardholderUpdatedEvent implements StripeEvent {
     IssuingCardholder.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'issuing_cardholder.updated',
     );
     return container.value;
   }
@@ -5012,6 +6135,11 @@ final class IssuingCardholderUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5031,6 +6159,8 @@ final class IssuingDisputeClosedEvent implements StripeEvent {
 
   final IssuingDispute object;
 
+  final String type = 'issuing_dispute.closed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5044,6 +6174,10 @@ final class IssuingDisputeClosedEvent implements StripeEvent {
     IssuingDispute.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'issuing_dispute.closed',
     );
     return container.value;
   }
@@ -5060,6 +6194,11 @@ final class IssuingDisputeClosedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5079,6 +6218,8 @@ final class IssuingDisputeCreatedEvent implements StripeEvent {
 
   final IssuingDispute object;
 
+  final String type = 'issuing_dispute.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5092,6 +6233,10 @@ final class IssuingDisputeCreatedEvent implements StripeEvent {
     IssuingDispute.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'issuing_dispute.created',
     );
     return container.value;
   }
@@ -5108,6 +6253,11 @@ final class IssuingDisputeCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5127,6 +6277,8 @@ final class IssuingDisputeFundsReinstatedEvent implements StripeEvent {
 
   final IssuingDispute object;
 
+  final String type = 'issuing_dispute.funds_reinstated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5140,6 +6292,10 @@ final class IssuingDisputeFundsReinstatedEvent implements StripeEvent {
     IssuingDispute.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'issuing_dispute.funds_reinstated',
     );
     return container.value;
   }
@@ -5156,6 +6312,11 @@ final class IssuingDisputeFundsReinstatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5175,6 +6336,8 @@ final class IssuingDisputeSubmittedEvent implements StripeEvent {
 
   final IssuingDispute object;
 
+  final String type = 'issuing_dispute.submitted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5188,6 +6351,10 @@ final class IssuingDisputeSubmittedEvent implements StripeEvent {
     IssuingDispute.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'issuing_dispute.submitted',
     );
     return container.value;
   }
@@ -5204,6 +6371,11 @@ final class IssuingDisputeSubmittedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5223,6 +6395,8 @@ final class IssuingDisputeUpdatedEvent implements StripeEvent {
 
   final IssuingDispute object;
 
+  final String type = 'issuing_dispute.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5236,6 +6410,10 @@ final class IssuingDisputeUpdatedEvent implements StripeEvent {
     IssuingDispute.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'issuing_dispute.updated',
     );
     return container.value;
   }
@@ -5252,6 +6430,11 @@ final class IssuingDisputeUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5271,6 +6454,8 @@ final class IssuingTokenCreatedEvent implements StripeEvent {
 
   final IssuingToken object;
 
+  final String type = 'issuing_token.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5284,6 +6469,10 @@ final class IssuingTokenCreatedEvent implements StripeEvent {
     IssuingToken.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'issuing_token.created',
     );
     return container.value;
   }
@@ -5300,6 +6489,11 @@ final class IssuingTokenCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5319,6 +6513,8 @@ final class IssuingTokenUpdatedEvent implements StripeEvent {
 
   final IssuingToken object;
 
+  final String type = 'issuing_token.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5332,6 +6528,10 @@ final class IssuingTokenUpdatedEvent implements StripeEvent {
     IssuingToken.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'issuing_token.updated',
     );
     return container.value;
   }
@@ -5348,6 +6548,11 @@ final class IssuingTokenUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5367,6 +6572,8 @@ final class IssuingTransactionCreatedEvent implements StripeEvent {
 
   final IssuingTransaction object;
 
+  final String type = 'issuing_transaction.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5380,6 +6587,10 @@ final class IssuingTransactionCreatedEvent implements StripeEvent {
     IssuingTransaction.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'issuing_transaction.created',
     );
     return container.value;
   }
@@ -5396,6 +6607,11 @@ final class IssuingTransactionCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5415,6 +6631,8 @@ final class IssuingTransactionUpdatedEvent implements StripeEvent {
 
   final IssuingTransaction object;
 
+  final String type = 'issuing_transaction.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5428,6 +6646,10 @@ final class IssuingTransactionUpdatedEvent implements StripeEvent {
     IssuingTransaction.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'issuing_transaction.updated',
     );
     return container.value;
   }
@@ -5444,6 +6666,11 @@ final class IssuingTransactionUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5462,6 +6689,8 @@ final class MandateUpdatedEvent implements StripeEvent {
 
   final Mandate object;
 
+  final String type = 'mandate.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5475,6 +6704,10 @@ final class MandateUpdatedEvent implements StripeEvent {
     Mandate.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'mandate.updated',
     );
     return container.value;
   }
@@ -5491,6 +6724,11 @@ final class MandateUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5510,6 +6748,8 @@ final class PaymentIntentAmountCapturableUpdatedEvent implements StripeEvent {
 
   final PaymentIntent object;
 
+  final String type = 'payment_intent.amount_capturable_updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5523,6 +6763,10 @@ final class PaymentIntentAmountCapturableUpdatedEvent implements StripeEvent {
     PaymentIntent.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payment_intent.amount_capturable_updated',
     );
     return container.value;
   }
@@ -5540,6 +6784,11 @@ final class PaymentIntentAmountCapturableUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5559,6 +6808,8 @@ final class PaymentIntentCanceledEvent implements StripeEvent {
 
   final PaymentIntent object;
 
+  final String type = 'payment_intent.canceled';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5572,6 +6823,10 @@ final class PaymentIntentCanceledEvent implements StripeEvent {
     PaymentIntent.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payment_intent.canceled',
     );
     return container.value;
   }
@@ -5588,6 +6843,11 @@ final class PaymentIntentCanceledEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5607,6 +6867,8 @@ final class PaymentIntentCreatedEvent implements StripeEvent {
 
   final PaymentIntent object;
 
+  final String type = 'payment_intent.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5620,6 +6882,10 @@ final class PaymentIntentCreatedEvent implements StripeEvent {
     PaymentIntent.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payment_intent.created',
     );
     return container.value;
   }
@@ -5636,6 +6902,11 @@ final class PaymentIntentCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5655,6 +6926,8 @@ final class PaymentIntentPartiallyFundedEvent implements StripeEvent {
 
   final PaymentIntent object;
 
+  final String type = 'payment_intent.partially_funded';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5668,6 +6941,10 @@ final class PaymentIntentPartiallyFundedEvent implements StripeEvent {
     PaymentIntent.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payment_intent.partially_funded',
     );
     return container.value;
   }
@@ -5684,6 +6961,11 @@ final class PaymentIntentPartiallyFundedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5703,6 +6985,8 @@ final class PaymentIntentPaymentFailedEvent implements StripeEvent {
 
   final PaymentIntent object;
 
+  final String type = 'payment_intent.payment_failed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5716,6 +7000,10 @@ final class PaymentIntentPaymentFailedEvent implements StripeEvent {
     PaymentIntent.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payment_intent.payment_failed',
     );
     return container.value;
   }
@@ -5732,6 +7020,11 @@ final class PaymentIntentPaymentFailedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5751,6 +7044,8 @@ final class PaymentIntentProcessingEvent implements StripeEvent {
 
   final PaymentIntent object;
 
+  final String type = 'payment_intent.processing';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5764,6 +7059,10 @@ final class PaymentIntentProcessingEvent implements StripeEvent {
     PaymentIntent.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payment_intent.processing',
     );
     return container.value;
   }
@@ -5780,6 +7079,11 @@ final class PaymentIntentProcessingEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5799,6 +7103,8 @@ final class PaymentIntentRequiresActionEvent implements StripeEvent {
 
   final PaymentIntent object;
 
+  final String type = 'payment_intent.requires_action';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5812,6 +7118,10 @@ final class PaymentIntentRequiresActionEvent implements StripeEvent {
     PaymentIntent.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payment_intent.requires_action',
     );
     return container.value;
   }
@@ -5828,6 +7138,11 @@ final class PaymentIntentRequiresActionEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5847,6 +7162,8 @@ final class PaymentIntentSucceededEvent implements StripeEvent {
 
   final PaymentIntent object;
 
+  final String type = 'payment_intent.succeeded';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5860,6 +7177,10 @@ final class PaymentIntentSucceededEvent implements StripeEvent {
     PaymentIntent.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payment_intent.succeeded',
     );
     return container.value;
   }
@@ -5876,6 +7197,11 @@ final class PaymentIntentSucceededEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5894,6 +7220,8 @@ final class PaymentLinkCreatedEvent implements StripeEvent {
 
   final PaymentLink object;
 
+  final String type = 'payment_link.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5907,6 +7235,10 @@ final class PaymentLinkCreatedEvent implements StripeEvent {
     PaymentLink.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payment_link.created',
     );
     return container.value;
   }
@@ -5923,6 +7255,11 @@ final class PaymentLinkCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5941,6 +7278,8 @@ final class PaymentLinkUpdatedEvent implements StripeEvent {
 
   final PaymentLink object;
 
+  final String type = 'payment_link.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -5954,6 +7293,10 @@ final class PaymentLinkUpdatedEvent implements StripeEvent {
     PaymentLink.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payment_link.updated',
     );
     return container.value;
   }
@@ -5970,6 +7313,11 @@ final class PaymentLinkUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -5989,6 +7337,8 @@ final class PaymentMethodAttachedEvent implements StripeEvent {
 
   final PaymentMethod object;
 
+  final String type = 'payment_method.attached';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6002,6 +7352,10 @@ final class PaymentMethodAttachedEvent implements StripeEvent {
     PaymentMethod.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payment_method.attached',
     );
     return container.value;
   }
@@ -6018,6 +7372,11 @@ final class PaymentMethodAttachedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6037,6 +7396,8 @@ final class PaymentMethodAutomaticallyUpdatedEvent implements StripeEvent {
 
   final PaymentMethod object;
 
+  final String type = 'payment_method.automatically_updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6050,6 +7411,10 @@ final class PaymentMethodAutomaticallyUpdatedEvent implements StripeEvent {
     PaymentMethod.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payment_method.automatically_updated',
     );
     return container.value;
   }
@@ -6067,6 +7432,11 @@ final class PaymentMethodAutomaticallyUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6086,6 +7456,8 @@ final class PaymentMethodDetachedEvent implements StripeEvent {
 
   final PaymentMethod object;
 
+  final String type = 'payment_method.detached';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6099,6 +7471,10 @@ final class PaymentMethodDetachedEvent implements StripeEvent {
     PaymentMethod.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payment_method.detached',
     );
     return container.value;
   }
@@ -6115,6 +7491,11 @@ final class PaymentMethodDetachedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6134,6 +7515,8 @@ final class PaymentMethodUpdatedEvent implements StripeEvent {
 
   final PaymentMethod object;
 
+  final String type = 'payment_method.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6147,6 +7530,10 @@ final class PaymentMethodUpdatedEvent implements StripeEvent {
     PaymentMethod.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payment_method.updated',
     );
     return container.value;
   }
@@ -6163,6 +7550,11 @@ final class PaymentMethodUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6181,6 +7573,8 @@ final class PayoutCanceledEvent implements StripeEvent {
 
   final Payout object;
 
+  final String type = 'payout.canceled';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6194,6 +7588,10 @@ final class PayoutCanceledEvent implements StripeEvent {
     Payout.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payout.canceled',
     );
     return container.value;
   }
@@ -6210,6 +7608,11 @@ final class PayoutCanceledEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6228,6 +7631,8 @@ final class PayoutCreatedEvent implements StripeEvent {
 
   final Payout object;
 
+  final String type = 'payout.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6241,6 +7646,10 @@ final class PayoutCreatedEvent implements StripeEvent {
     Payout.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payout.created',
     );
     return container.value;
   }
@@ -6257,6 +7666,11 @@ final class PayoutCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6275,6 +7689,8 @@ final class PayoutFailedEvent implements StripeEvent {
 
   final Payout object;
 
+  final String type = 'payout.failed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6288,6 +7704,10 @@ final class PayoutFailedEvent implements StripeEvent {
     Payout.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payout.failed',
     );
     return container.value;
   }
@@ -6304,6 +7724,11 @@ final class PayoutFailedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6322,6 +7747,8 @@ final class PayoutPaidEvent implements StripeEvent {
 
   final Payout object;
 
+  final String type = 'payout.paid';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6335,6 +7762,10 @@ final class PayoutPaidEvent implements StripeEvent {
     Payout.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payout.paid',
     );
     return container.value;
   }
@@ -6351,6 +7782,11 @@ final class PayoutPaidEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6370,6 +7806,8 @@ final class PayoutReconciliationCompletedEvent implements StripeEvent {
 
   final Payout object;
 
+  final String type = 'payout.reconciliation_completed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6383,6 +7821,10 @@ final class PayoutReconciliationCompletedEvent implements StripeEvent {
     Payout.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payout.reconciliation_completed',
     );
     return container.value;
   }
@@ -6399,6 +7841,11 @@ final class PayoutReconciliationCompletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6417,6 +7864,8 @@ final class PayoutUpdatedEvent implements StripeEvent {
 
   final Payout object;
 
+  final String type = 'payout.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6430,6 +7879,10 @@ final class PayoutUpdatedEvent implements StripeEvent {
     Payout.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'payout.updated',
     );
     return container.value;
   }
@@ -6446,6 +7899,11 @@ final class PayoutUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6464,6 +7922,8 @@ final class PersonCreatedEvent implements StripeEvent {
 
   final Person object;
 
+  final String type = 'person.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6477,6 +7937,10 @@ final class PersonCreatedEvent implements StripeEvent {
     Person.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'person.created',
     );
     return container.value;
   }
@@ -6493,6 +7957,11 @@ final class PersonCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6511,6 +7980,8 @@ final class PersonDeletedEvent implements StripeEvent {
 
   final Person object;
 
+  final String type = 'person.deleted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6524,6 +7995,10 @@ final class PersonDeletedEvent implements StripeEvent {
     Person.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'person.deleted',
     );
     return container.value;
   }
@@ -6540,6 +8015,11 @@ final class PersonDeletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6558,6 +8038,8 @@ final class PersonUpdatedEvent implements StripeEvent {
 
   final Person object;
 
+  final String type = 'person.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6571,6 +8053,10 @@ final class PersonUpdatedEvent implements StripeEvent {
     Person.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'person.updated',
     );
     return container.value;
   }
@@ -6587,6 +8073,11 @@ final class PersonUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6605,6 +8096,8 @@ final class PlanCreatedEvent implements StripeEvent {
 
   final Plan object;
 
+  final String type = 'plan.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6618,6 +8111,10 @@ final class PlanCreatedEvent implements StripeEvent {
     Plan.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'plan.created',
     );
     return container.value;
   }
@@ -6634,6 +8131,11 @@ final class PlanCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6652,6 +8154,8 @@ final class PlanDeletedEvent implements StripeEvent {
 
   final Plan object;
 
+  final String type = 'plan.deleted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6665,6 +8169,10 @@ final class PlanDeletedEvent implements StripeEvent {
     Plan.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'plan.deleted',
     );
     return container.value;
   }
@@ -6681,6 +8189,11 @@ final class PlanDeletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6699,6 +8212,8 @@ final class PlanUpdatedEvent implements StripeEvent {
 
   final Plan object;
 
+  final String type = 'plan.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6712,6 +8227,10 @@ final class PlanUpdatedEvent implements StripeEvent {
     Plan.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'plan.updated',
     );
     return container.value;
   }
@@ -6728,6 +8247,11 @@ final class PlanUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6746,6 +8270,8 @@ final class PriceCreatedEvent implements StripeEvent {
 
   final Price object;
 
+  final String type = 'price.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6759,6 +8285,10 @@ final class PriceCreatedEvent implements StripeEvent {
     Price.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'price.created',
     );
     return container.value;
   }
@@ -6775,6 +8305,11 @@ final class PriceCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6793,6 +8328,8 @@ final class PriceDeletedEvent implements StripeEvent {
 
   final Price object;
 
+  final String type = 'price.deleted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6806,6 +8343,10 @@ final class PriceDeletedEvent implements StripeEvent {
     Price.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'price.deleted',
     );
     return container.value;
   }
@@ -6822,6 +8363,11 @@ final class PriceDeletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6840,6 +8386,8 @@ final class PriceUpdatedEvent implements StripeEvent {
 
   final Price object;
 
+  final String type = 'price.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6853,6 +8401,10 @@ final class PriceUpdatedEvent implements StripeEvent {
     Price.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'price.updated',
     );
     return container.value;
   }
@@ -6869,6 +8421,11 @@ final class PriceUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6887,6 +8444,8 @@ final class ProductCreatedEvent implements StripeEvent {
 
   final Product object;
 
+  final String type = 'product.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6900,6 +8459,10 @@ final class ProductCreatedEvent implements StripeEvent {
     Product.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'product.created',
     );
     return container.value;
   }
@@ -6916,6 +8479,11 @@ final class ProductCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6934,6 +8502,8 @@ final class ProductDeletedEvent implements StripeEvent {
 
   final Product object;
 
+  final String type = 'product.deleted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6947,6 +8517,10 @@ final class ProductDeletedEvent implements StripeEvent {
     Product.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'product.deleted',
     );
     return container.value;
   }
@@ -6963,6 +8537,11 @@ final class ProductDeletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -6981,6 +8560,8 @@ final class ProductUpdatedEvent implements StripeEvent {
 
   final Product object;
 
+  final String type = 'product.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -6994,6 +8575,10 @@ final class ProductUpdatedEvent implements StripeEvent {
     Product.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'product.updated',
     );
     return container.value;
   }
@@ -7010,6 +8595,11 @@ final class ProductUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7029,6 +8619,8 @@ final class PromotionCodeCreatedEvent implements StripeEvent {
 
   final PromotionCode object;
 
+  final String type = 'promotion_code.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7042,6 +8634,10 @@ final class PromotionCodeCreatedEvent implements StripeEvent {
     PromotionCode.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'promotion_code.created',
     );
     return container.value;
   }
@@ -7058,6 +8654,11 @@ final class PromotionCodeCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7077,6 +8678,8 @@ final class PromotionCodeUpdatedEvent implements StripeEvent {
 
   final PromotionCode object;
 
+  final String type = 'promotion_code.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7090,6 +8693,10 @@ final class PromotionCodeUpdatedEvent implements StripeEvent {
     PromotionCode.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'promotion_code.updated',
     );
     return container.value;
   }
@@ -7106,6 +8713,11 @@ final class PromotionCodeUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7124,6 +8736,8 @@ final class QuoteAcceptedEvent implements StripeEvent {
 
   final Quote object;
 
+  final String type = 'quote.accepted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7137,6 +8751,10 @@ final class QuoteAcceptedEvent implements StripeEvent {
     Quote.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'quote.accepted',
     );
     return container.value;
   }
@@ -7153,6 +8771,11 @@ final class QuoteAcceptedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7171,6 +8794,8 @@ final class QuoteCanceledEvent implements StripeEvent {
 
   final Quote object;
 
+  final String type = 'quote.canceled';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7184,6 +8809,10 @@ final class QuoteCanceledEvent implements StripeEvent {
     Quote.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'quote.canceled',
     );
     return container.value;
   }
@@ -7200,6 +8829,11 @@ final class QuoteCanceledEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7218,6 +8852,8 @@ final class QuoteCreatedEvent implements StripeEvent {
 
   final Quote object;
 
+  final String type = 'quote.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7231,6 +8867,10 @@ final class QuoteCreatedEvent implements StripeEvent {
     Quote.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'quote.created',
     );
     return container.value;
   }
@@ -7247,6 +8887,11 @@ final class QuoteCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7265,6 +8910,8 @@ final class QuoteFinalizedEvent implements StripeEvent {
 
   final Quote object;
 
+  final String type = 'quote.finalized';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7278,6 +8925,10 @@ final class QuoteFinalizedEvent implements StripeEvent {
     Quote.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'quote.finalized',
     );
     return container.value;
   }
@@ -7294,6 +8945,11 @@ final class QuoteFinalizedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7313,6 +8969,8 @@ final class RadarEarlyFraudWarningCreatedEvent implements StripeEvent {
 
   final RadarEarlyFraudWarning object;
 
+  final String type = 'radar.early_fraud_warning.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7326,6 +8984,10 @@ final class RadarEarlyFraudWarningCreatedEvent implements StripeEvent {
     RadarEarlyFraudWarning.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'radar.early_fraud_warning.created',
     );
     return container.value;
   }
@@ -7342,6 +9004,11 @@ final class RadarEarlyFraudWarningCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7361,6 +9028,8 @@ final class RadarEarlyFraudWarningUpdatedEvent implements StripeEvent {
 
   final RadarEarlyFraudWarning object;
 
+  final String type = 'radar.early_fraud_warning.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7374,6 +9043,10 @@ final class RadarEarlyFraudWarningUpdatedEvent implements StripeEvent {
     RadarEarlyFraudWarning.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'radar.early_fraud_warning.updated',
     );
     return container.value;
   }
@@ -7390,6 +9063,11 @@ final class RadarEarlyFraudWarningUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7408,6 +9086,8 @@ final class RefundCreatedEvent implements StripeEvent {
 
   final Refund object;
 
+  final String type = 'refund.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7421,6 +9101,10 @@ final class RefundCreatedEvent implements StripeEvent {
     Refund.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'refund.created',
     );
     return container.value;
   }
@@ -7437,6 +9121,11 @@ final class RefundCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7455,6 +9144,8 @@ final class RefundUpdatedEvent implements StripeEvent {
 
   final Refund object;
 
+  final String type = 'refund.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7468,6 +9159,10 @@ final class RefundUpdatedEvent implements StripeEvent {
     Refund.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'refund.updated',
     );
     return container.value;
   }
@@ -7484,6 +9179,11 @@ final class RefundUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7503,6 +9203,8 @@ final class ReportingReportRunFailedEvent implements StripeEvent {
 
   final ReportingReportRun object;
 
+  final String type = 'reporting.report_run.failed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7516,6 +9218,10 @@ final class ReportingReportRunFailedEvent implements StripeEvent {
     ReportingReportRun.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'reporting.report_run.failed',
     );
     return container.value;
   }
@@ -7532,6 +9238,11 @@ final class ReportingReportRunFailedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7551,6 +9262,8 @@ final class ReportingReportRunSucceededEvent implements StripeEvent {
 
   final ReportingReportRun object;
 
+  final String type = 'reporting.report_run.succeeded';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7564,6 +9277,10 @@ final class ReportingReportRunSucceededEvent implements StripeEvent {
     ReportingReportRun.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'reporting.report_run.succeeded',
     );
     return container.value;
   }
@@ -7580,6 +9297,11 @@ final class ReportingReportRunSucceededEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7599,6 +9321,8 @@ final class ReportingReportTypeUpdatedEvent implements StripeEvent {
 
   final ReportingReportType object;
 
+  final String type = 'reporting.report_type.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7612,6 +9336,10 @@ final class ReportingReportTypeUpdatedEvent implements StripeEvent {
     ReportingReportType.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'reporting.report_type.updated',
     );
     return container.value;
   }
@@ -7628,6 +9356,11 @@ final class ReportingReportTypeUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7646,6 +9379,8 @@ final class ReviewClosedEvent implements StripeEvent {
 
   final Review object;
 
+  final String type = 'review.closed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7659,6 +9394,10 @@ final class ReviewClosedEvent implements StripeEvent {
     Review.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'review.closed',
     );
     return container.value;
   }
@@ -7675,6 +9414,11 @@ final class ReviewClosedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7693,6 +9437,8 @@ final class ReviewOpenedEvent implements StripeEvent {
 
   final Review object;
 
+  final String type = 'review.opened';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7706,6 +9452,10 @@ final class ReviewOpenedEvent implements StripeEvent {
     Review.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'review.opened',
     );
     return container.value;
   }
@@ -7722,6 +9472,11 @@ final class ReviewOpenedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7741,6 +9496,8 @@ final class SetupIntentCanceledEvent implements StripeEvent {
 
   final SetupIntent object;
 
+  final String type = 'setup_intent.canceled';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7754,6 +9511,10 @@ final class SetupIntentCanceledEvent implements StripeEvent {
     SetupIntent.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'setup_intent.canceled',
     );
     return container.value;
   }
@@ -7770,6 +9531,11 @@ final class SetupIntentCanceledEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7788,6 +9554,8 @@ final class SetupIntentCreatedEvent implements StripeEvent {
 
   final SetupIntent object;
 
+  final String type = 'setup_intent.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7801,6 +9569,10 @@ final class SetupIntentCreatedEvent implements StripeEvent {
     SetupIntent.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'setup_intent.created',
     );
     return container.value;
   }
@@ -7817,6 +9589,11 @@ final class SetupIntentCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7836,6 +9613,8 @@ final class SetupIntentRequiresActionEvent implements StripeEvent {
 
   final SetupIntent object;
 
+  final String type = 'setup_intent.requires_action';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7849,6 +9628,10 @@ final class SetupIntentRequiresActionEvent implements StripeEvent {
     SetupIntent.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'setup_intent.requires_action',
     );
     return container.value;
   }
@@ -7865,6 +9648,11 @@ final class SetupIntentRequiresActionEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7884,6 +9672,8 @@ final class SetupIntentSetupFailedEvent implements StripeEvent {
 
   final SetupIntent object;
 
+  final String type = 'setup_intent.setup_failed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7897,6 +9687,10 @@ final class SetupIntentSetupFailedEvent implements StripeEvent {
     SetupIntent.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'setup_intent.setup_failed',
     );
     return container.value;
   }
@@ -7913,6 +9707,11 @@ final class SetupIntentSetupFailedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7932,6 +9731,8 @@ final class SetupIntentSucceededEvent implements StripeEvent {
 
   final SetupIntent object;
 
+  final String type = 'setup_intent.succeeded';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7945,6 +9746,10 @@ final class SetupIntentSucceededEvent implements StripeEvent {
     SetupIntent.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'setup_intent.succeeded',
     );
     return container.value;
   }
@@ -7961,6 +9766,11 @@ final class SetupIntentSucceededEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -7980,6 +9790,8 @@ final class SigmaScheduledQueryRunCreatedEvent implements StripeEvent {
 
   final ScheduledQueryRun object;
 
+  final String type = 'sigma.scheduled_query_run.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -7993,6 +9805,10 @@ final class SigmaScheduledQueryRunCreatedEvent implements StripeEvent {
     ScheduledQueryRun.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'sigma.scheduled_query_run.created',
     );
     return container.value;
   }
@@ -8009,6 +9825,11 @@ final class SigmaScheduledQueryRunCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8027,6 +9848,8 @@ final class SourceCanceledEvent implements StripeEvent {
 
   final Source object;
 
+  final String type = 'source.canceled';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8040,6 +9863,10 @@ final class SourceCanceledEvent implements StripeEvent {
     Source.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'source.canceled',
     );
     return container.value;
   }
@@ -8056,6 +9883,11 @@ final class SourceCanceledEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8074,6 +9906,8 @@ final class SourceChargeableEvent implements StripeEvent {
 
   final Source object;
 
+  final String type = 'source.chargeable';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8087,6 +9921,10 @@ final class SourceChargeableEvent implements StripeEvent {
     Source.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'source.chargeable',
     );
     return container.value;
   }
@@ -8103,6 +9941,11 @@ final class SourceChargeableEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8121,6 +9964,8 @@ final class SourceFailedEvent implements StripeEvent {
 
   final Source object;
 
+  final String type = 'source.failed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8134,6 +9979,10 @@ final class SourceFailedEvent implements StripeEvent {
     Source.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'source.failed',
     );
     return container.value;
   }
@@ -8150,6 +9999,11 @@ final class SourceFailedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8169,6 +10023,8 @@ final class SourceMandateNotificationEvent implements StripeEvent {
 
   final SourceMandateNotification object;
 
+  final String type = 'source.mandate_notification';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8182,6 +10038,10 @@ final class SourceMandateNotificationEvent implements StripeEvent {
     SourceMandateNotification.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'source.mandate_notification',
     );
     return container.value;
   }
@@ -8198,6 +10058,11 @@ final class SourceMandateNotificationEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8217,6 +10082,8 @@ final class SourceRefundAttributesRequiredEvent implements StripeEvent {
 
   final Source object;
 
+  final String type = 'source.refund_attributes_required';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8230,6 +10097,10 @@ final class SourceRefundAttributesRequiredEvent implements StripeEvent {
     Source.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'source.refund_attributes_required',
     );
     return container.value;
   }
@@ -8247,6 +10118,11 @@ final class SourceRefundAttributesRequiredEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8266,6 +10142,8 @@ final class SourceTransactionCreatedEvent implements StripeEvent {
 
   final SourceTransaction object;
 
+  final String type = 'source.transaction.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8279,6 +10157,10 @@ final class SourceTransactionCreatedEvent implements StripeEvent {
     SourceTransaction.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'source.transaction.created',
     );
     return container.value;
   }
@@ -8295,6 +10177,11 @@ final class SourceTransactionCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8314,6 +10201,8 @@ final class SourceTransactionUpdatedEvent implements StripeEvent {
 
   final SourceTransaction object;
 
+  final String type = 'source.transaction.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8327,6 +10216,10 @@ final class SourceTransactionUpdatedEvent implements StripeEvent {
     SourceTransaction.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'source.transaction.updated',
     );
     return container.value;
   }
@@ -8343,6 +10236,11 @@ final class SourceTransactionUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8362,6 +10260,8 @@ final class SubscriptionScheduleAbortedEvent implements StripeEvent {
 
   final SubscriptionSchedule object;
 
+  final String type = 'subscription_schedule.aborted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8375,6 +10275,10 @@ final class SubscriptionScheduleAbortedEvent implements StripeEvent {
     SubscriptionSchedule.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'subscription_schedule.aborted',
     );
     return container.value;
   }
@@ -8391,6 +10295,11 @@ final class SubscriptionScheduleAbortedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8410,6 +10319,8 @@ final class SubscriptionScheduleCanceledEvent implements StripeEvent {
 
   final SubscriptionSchedule object;
 
+  final String type = 'subscription_schedule.canceled';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8423,6 +10334,10 @@ final class SubscriptionScheduleCanceledEvent implements StripeEvent {
     SubscriptionSchedule.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'subscription_schedule.canceled',
     );
     return container.value;
   }
@@ -8439,6 +10354,11 @@ final class SubscriptionScheduleCanceledEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8458,6 +10378,8 @@ final class SubscriptionScheduleCompletedEvent implements StripeEvent {
 
   final SubscriptionSchedule object;
 
+  final String type = 'subscription_schedule.completed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8471,6 +10393,10 @@ final class SubscriptionScheduleCompletedEvent implements StripeEvent {
     SubscriptionSchedule.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'subscription_schedule.completed',
     );
     return container.value;
   }
@@ -8487,6 +10413,11 @@ final class SubscriptionScheduleCompletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8506,6 +10437,8 @@ final class SubscriptionScheduleCreatedEvent implements StripeEvent {
 
   final SubscriptionSchedule object;
 
+  final String type = 'subscription_schedule.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8519,6 +10452,10 @@ final class SubscriptionScheduleCreatedEvent implements StripeEvent {
     SubscriptionSchedule.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'subscription_schedule.created',
     );
     return container.value;
   }
@@ -8535,6 +10472,11 @@ final class SubscriptionScheduleCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8554,6 +10496,8 @@ final class SubscriptionScheduleExpiringEvent implements StripeEvent {
 
   final SubscriptionSchedule object;
 
+  final String type = 'subscription_schedule.expiring';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8567,6 +10511,10 @@ final class SubscriptionScheduleExpiringEvent implements StripeEvent {
     SubscriptionSchedule.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'subscription_schedule.expiring',
     );
     return container.value;
   }
@@ -8583,6 +10531,11 @@ final class SubscriptionScheduleExpiringEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8602,6 +10555,8 @@ final class SubscriptionScheduleReleasedEvent implements StripeEvent {
 
   final SubscriptionSchedule object;
 
+  final String type = 'subscription_schedule.released';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8615,6 +10570,10 @@ final class SubscriptionScheduleReleasedEvent implements StripeEvent {
     SubscriptionSchedule.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'subscription_schedule.released',
     );
     return container.value;
   }
@@ -8631,6 +10590,11 @@ final class SubscriptionScheduleReleasedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8650,6 +10614,8 @@ final class SubscriptionScheduleUpdatedEvent implements StripeEvent {
 
   final SubscriptionSchedule object;
 
+  final String type = 'subscription_schedule.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8663,6 +10629,10 @@ final class SubscriptionScheduleUpdatedEvent implements StripeEvent {
     SubscriptionSchedule.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'subscription_schedule.updated',
     );
     return container.value;
   }
@@ -8679,6 +10649,11 @@ final class SubscriptionScheduleUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8697,6 +10672,8 @@ final class TaxSettingsUpdatedEvent implements StripeEvent {
 
   final TaxSettings object;
 
+  final String type = 'tax.settings.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8710,6 +10687,10 @@ final class TaxSettingsUpdatedEvent implements StripeEvent {
     TaxSettings.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'tax.settings.updated',
     );
     return container.value;
   }
@@ -8726,6 +10707,11 @@ final class TaxSettingsUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8744,6 +10730,8 @@ final class TaxRateCreatedEvent implements StripeEvent {
 
   final TaxRate object;
 
+  final String type = 'tax_rate.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8757,6 +10745,10 @@ final class TaxRateCreatedEvent implements StripeEvent {
     TaxRate.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'tax_rate.created',
     );
     return container.value;
   }
@@ -8773,6 +10765,11 @@ final class TaxRateCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8791,6 +10788,8 @@ final class TaxRateUpdatedEvent implements StripeEvent {
 
   final TaxRate object;
 
+  final String type = 'tax_rate.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8804,6 +10803,10 @@ final class TaxRateUpdatedEvent implements StripeEvent {
     TaxRate.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'tax_rate.updated',
     );
     return container.value;
   }
@@ -8820,6 +10823,11 @@ final class TaxRateUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8839,6 +10847,8 @@ final class TerminalReaderActionFailedEvent implements StripeEvent {
 
   final TerminalReader object;
 
+  final String type = 'terminal.reader.action_failed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8852,6 +10862,10 @@ final class TerminalReaderActionFailedEvent implements StripeEvent {
     TerminalReader.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'terminal.reader.action_failed',
     );
     return container.value;
   }
@@ -8868,6 +10882,11 @@ final class TerminalReaderActionFailedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8887,6 +10906,8 @@ final class TerminalReaderActionSucceededEvent implements StripeEvent {
 
   final TerminalReader object;
 
+  final String type = 'terminal.reader.action_succeeded';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8900,6 +10921,10 @@ final class TerminalReaderActionSucceededEvent implements StripeEvent {
     TerminalReader.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'terminal.reader.action_succeeded',
     );
     return container.value;
   }
@@ -8916,6 +10941,11 @@ final class TerminalReaderActionSucceededEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8935,6 +10965,8 @@ final class TestHelpersTestClockAdvancingEvent implements StripeEvent {
 
   final TestHelpersTestClock object;
 
+  final String type = 'test_helpers.test_clock.advancing';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8948,6 +10980,10 @@ final class TestHelpersTestClockAdvancingEvent implements StripeEvent {
     TestHelpersTestClock.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'test_helpers.test_clock.advancing',
     );
     return container.value;
   }
@@ -8964,6 +11000,11 @@ final class TestHelpersTestClockAdvancingEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -8983,6 +11024,8 @@ final class TestHelpersTestClockCreatedEvent implements StripeEvent {
 
   final TestHelpersTestClock object;
 
+  final String type = 'test_helpers.test_clock.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -8996,6 +11039,10 @@ final class TestHelpersTestClockCreatedEvent implements StripeEvent {
     TestHelpersTestClock.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'test_helpers.test_clock.created',
     );
     return container.value;
   }
@@ -9012,6 +11059,11 @@ final class TestHelpersTestClockCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9031,6 +11083,8 @@ final class TestHelpersTestClockDeletedEvent implements StripeEvent {
 
   final TestHelpersTestClock object;
 
+  final String type = 'test_helpers.test_clock.deleted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9044,6 +11098,10 @@ final class TestHelpersTestClockDeletedEvent implements StripeEvent {
     TestHelpersTestClock.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'test_helpers.test_clock.deleted',
     );
     return container.value;
   }
@@ -9060,6 +11118,11 @@ final class TestHelpersTestClockDeletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9079,6 +11142,8 @@ final class TestHelpersTestClockInternalFailureEvent implements StripeEvent {
 
   final TestHelpersTestClock object;
 
+  final String type = 'test_helpers.test_clock.internal_failure';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9092,6 +11157,10 @@ final class TestHelpersTestClockInternalFailureEvent implements StripeEvent {
     TestHelpersTestClock.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'test_helpers.test_clock.internal_failure',
     );
     return container.value;
   }
@@ -9109,6 +11178,11 @@ final class TestHelpersTestClockInternalFailureEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9128,6 +11202,8 @@ final class TestHelpersTestClockReadyEvent implements StripeEvent {
 
   final TestHelpersTestClock object;
 
+  final String type = 'test_helpers.test_clock.ready';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9141,6 +11217,10 @@ final class TestHelpersTestClockReadyEvent implements StripeEvent {
     TestHelpersTestClock.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'test_helpers.test_clock.ready',
     );
     return container.value;
   }
@@ -9157,6 +11237,11 @@ final class TestHelpersTestClockReadyEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9175,6 +11260,8 @@ final class TopupCanceledEvent implements StripeEvent {
 
   final Topup object;
 
+  final String type = 'topup.canceled';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9188,6 +11275,10 @@ final class TopupCanceledEvent implements StripeEvent {
     Topup.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'topup.canceled',
     );
     return container.value;
   }
@@ -9204,6 +11295,11 @@ final class TopupCanceledEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9222,6 +11318,8 @@ final class TopupCreatedEvent implements StripeEvent {
 
   final Topup object;
 
+  final String type = 'topup.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9235,6 +11333,10 @@ final class TopupCreatedEvent implements StripeEvent {
     Topup.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'topup.created',
     );
     return container.value;
   }
@@ -9251,6 +11353,11 @@ final class TopupCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9269,6 +11376,8 @@ final class TopupFailedEvent implements StripeEvent {
 
   final Topup object;
 
+  final String type = 'topup.failed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9282,6 +11391,10 @@ final class TopupFailedEvent implements StripeEvent {
     Topup.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'topup.failed',
     );
     return container.value;
   }
@@ -9298,6 +11411,11 @@ final class TopupFailedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9316,6 +11434,8 @@ final class TopupReversedEvent implements StripeEvent {
 
   final Topup object;
 
+  final String type = 'topup.reversed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9329,6 +11449,10 @@ final class TopupReversedEvent implements StripeEvent {
     Topup.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'topup.reversed',
     );
     return container.value;
   }
@@ -9345,6 +11469,11 @@ final class TopupReversedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9363,6 +11492,8 @@ final class TopupSucceededEvent implements StripeEvent {
 
   final Topup object;
 
+  final String type = 'topup.succeeded';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9376,6 +11507,10 @@ final class TopupSucceededEvent implements StripeEvent {
     Topup.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'topup.succeeded',
     );
     return container.value;
   }
@@ -9392,6 +11527,11 @@ final class TopupSucceededEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9410,6 +11550,8 @@ final class TransferCreatedEvent implements StripeEvent {
 
   final Transfer object;
 
+  final String type = 'transfer.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9423,6 +11565,10 @@ final class TransferCreatedEvent implements StripeEvent {
     Transfer.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'transfer.created',
     );
     return container.value;
   }
@@ -9439,6 +11585,11 @@ final class TransferCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9457,6 +11608,8 @@ final class TransferReversedEvent implements StripeEvent {
 
   final Transfer object;
 
+  final String type = 'transfer.reversed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9470,6 +11623,10 @@ final class TransferReversedEvent implements StripeEvent {
     Transfer.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'transfer.reversed',
     );
     return container.value;
   }
@@ -9486,6 +11643,11 @@ final class TransferReversedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9504,6 +11666,8 @@ final class TransferUpdatedEvent implements StripeEvent {
 
   final Transfer object;
 
+  final String type = 'transfer.updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9517,6 +11681,10 @@ final class TransferUpdatedEvent implements StripeEvent {
     Transfer.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'transfer.updated',
     );
     return container.value;
   }
@@ -9533,6 +11701,11 @@ final class TransferUpdatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9552,6 +11725,8 @@ final class TreasuryCreditReversalCreatedEvent implements StripeEvent {
 
   final TreasuryCreditReversal object;
 
+  final String type = 'treasury.credit_reversal.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9565,6 +11740,10 @@ final class TreasuryCreditReversalCreatedEvent implements StripeEvent {
     TreasuryCreditReversal.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.credit_reversal.created',
     );
     return container.value;
   }
@@ -9581,6 +11760,11 @@ final class TreasuryCreditReversalCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9600,6 +11784,8 @@ final class TreasuryCreditReversalPostedEvent implements StripeEvent {
 
   final TreasuryCreditReversal object;
 
+  final String type = 'treasury.credit_reversal.posted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9613,6 +11799,10 @@ final class TreasuryCreditReversalPostedEvent implements StripeEvent {
     TreasuryCreditReversal.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.credit_reversal.posted',
     );
     return container.value;
   }
@@ -9629,6 +11819,11 @@ final class TreasuryCreditReversalPostedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9648,6 +11843,8 @@ final class TreasuryDebitReversalCompletedEvent implements StripeEvent {
 
   final TreasuryDebitReversal object;
 
+  final String type = 'treasury.debit_reversal.completed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9661,6 +11858,10 @@ final class TreasuryDebitReversalCompletedEvent implements StripeEvent {
     TreasuryDebitReversal.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.debit_reversal.completed',
     );
     return container.value;
   }
@@ -9678,6 +11879,11 @@ final class TreasuryDebitReversalCompletedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9697,6 +11903,8 @@ final class TreasuryDebitReversalCreatedEvent implements StripeEvent {
 
   final TreasuryDebitReversal object;
 
+  final String type = 'treasury.debit_reversal.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9710,6 +11918,10 @@ final class TreasuryDebitReversalCreatedEvent implements StripeEvent {
     TreasuryDebitReversal.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.debit_reversal.created',
     );
     return container.value;
   }
@@ -9726,6 +11938,11 @@ final class TreasuryDebitReversalCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9747,6 +11964,8 @@ final class TreasuryDebitReversalInitialCreditGrantedEvent
 
   final TreasuryDebitReversal object;
 
+  final String type = 'treasury.debit_reversal.initial_credit_granted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9760,6 +11979,10 @@ final class TreasuryDebitReversalInitialCreditGrantedEvent
     TreasuryDebitReversal.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.debit_reversal.initial_credit_granted',
     );
     return container.value;
   }
@@ -9777,6 +12000,11 @@ final class TreasuryDebitReversalInitialCreditGrantedEvent
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9796,6 +12024,8 @@ final class TreasuryFinancialAccountClosedEvent implements StripeEvent {
 
   final TreasuryFinancialAccount object;
 
+  final String type = 'treasury.financial_account.closed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9809,6 +12039,10 @@ final class TreasuryFinancialAccountClosedEvent implements StripeEvent {
     TreasuryFinancialAccount.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.financial_account.closed',
     );
     return container.value;
   }
@@ -9826,6 +12060,11 @@ final class TreasuryFinancialAccountClosedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9845,6 +12084,8 @@ final class TreasuryFinancialAccountCreatedEvent implements StripeEvent {
 
   final TreasuryFinancialAccount object;
 
+  final String type = 'treasury.financial_account.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9858,6 +12099,10 @@ final class TreasuryFinancialAccountCreatedEvent implements StripeEvent {
     TreasuryFinancialAccount.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.financial_account.created',
     );
     return container.value;
   }
@@ -9875,6 +12120,11 @@ final class TreasuryFinancialAccountCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9897,6 +12147,8 @@ final class TreasuryFinancialAccountFeaturesStatusUpdatedEvent
 
   final TreasuryFinancialAccount object;
 
+  final String type = 'treasury.financial_account.features_status_updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9910,6 +12162,10 @@ final class TreasuryFinancialAccountFeaturesStatusUpdatedEvent
     TreasuryFinancialAccount.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.financial_account.features_status_updated',
     );
     return container.value;
   }
@@ -9927,6 +12183,11 @@ final class TreasuryFinancialAccountFeaturesStatusUpdatedEvent
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9946,6 +12207,8 @@ final class TreasuryInboundTransferCanceledEvent implements StripeEvent {
 
   final TreasuryInboundTransfer object;
 
+  final String type = 'treasury.inbound_transfer.canceled';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -9959,6 +12222,10 @@ final class TreasuryInboundTransferCanceledEvent implements StripeEvent {
     TreasuryInboundTransfer.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.inbound_transfer.canceled',
     );
     return container.value;
   }
@@ -9976,6 +12243,11 @@ final class TreasuryInboundTransferCanceledEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -9995,6 +12267,8 @@ final class TreasuryInboundTransferCreatedEvent implements StripeEvent {
 
   final TreasuryInboundTransfer object;
 
+  final String type = 'treasury.inbound_transfer.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10008,6 +12282,10 @@ final class TreasuryInboundTransferCreatedEvent implements StripeEvent {
     TreasuryInboundTransfer.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.inbound_transfer.created',
     );
     return container.value;
   }
@@ -10025,6 +12303,11 @@ final class TreasuryInboundTransferCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10044,6 +12327,8 @@ final class TreasuryInboundTransferFailedEvent implements StripeEvent {
 
   final TreasuryInboundTransfer object;
 
+  final String type = 'treasury.inbound_transfer.failed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10057,6 +12342,10 @@ final class TreasuryInboundTransferFailedEvent implements StripeEvent {
     TreasuryInboundTransfer.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.inbound_transfer.failed',
     );
     return container.value;
   }
@@ -10073,6 +12362,11 @@ final class TreasuryInboundTransferFailedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10092,6 +12386,8 @@ final class TreasuryInboundTransferSucceededEvent implements StripeEvent {
 
   final TreasuryInboundTransfer object;
 
+  final String type = 'treasury.inbound_transfer.succeeded';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10105,6 +12401,10 @@ final class TreasuryInboundTransferSucceededEvent implements StripeEvent {
     TreasuryInboundTransfer.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.inbound_transfer.succeeded',
     );
     return container.value;
   }
@@ -10122,6 +12422,11 @@ final class TreasuryInboundTransferSucceededEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10141,6 +12446,8 @@ final class TreasuryOutboundPaymentCanceledEvent implements StripeEvent {
 
   final TreasuryOutboundPayment object;
 
+  final String type = 'treasury.outbound_payment.canceled';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10154,6 +12461,10 @@ final class TreasuryOutboundPaymentCanceledEvent implements StripeEvent {
     TreasuryOutboundPayment.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.outbound_payment.canceled',
     );
     return container.value;
   }
@@ -10171,6 +12482,11 @@ final class TreasuryOutboundPaymentCanceledEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10190,6 +12506,8 @@ final class TreasuryOutboundPaymentCreatedEvent implements StripeEvent {
 
   final TreasuryOutboundPayment object;
 
+  final String type = 'treasury.outbound_payment.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10203,6 +12521,10 @@ final class TreasuryOutboundPaymentCreatedEvent implements StripeEvent {
     TreasuryOutboundPayment.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.outbound_payment.created',
     );
     return container.value;
   }
@@ -10220,6 +12542,11 @@ final class TreasuryOutboundPaymentCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10242,6 +12569,8 @@ final class TreasuryOutboundPaymentExpectedArrivalDateUpdatedEvent
 
   final TreasuryOutboundPayment object;
 
+  final String type = 'treasury.outbound_payment.expected_arrival_date_updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10255,6 +12584,10 @@ final class TreasuryOutboundPaymentExpectedArrivalDateUpdatedEvent
     TreasuryOutboundPayment.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.outbound_payment.expected_arrival_date_updated',
     );
     return container.value;
   }
@@ -10272,6 +12605,11 @@ final class TreasuryOutboundPaymentExpectedArrivalDateUpdatedEvent
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10291,6 +12629,8 @@ final class TreasuryOutboundPaymentFailedEvent implements StripeEvent {
 
   final TreasuryOutboundPayment object;
 
+  final String type = 'treasury.outbound_payment.failed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10304,6 +12644,10 @@ final class TreasuryOutboundPaymentFailedEvent implements StripeEvent {
     TreasuryOutboundPayment.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.outbound_payment.failed',
     );
     return container.value;
   }
@@ -10320,6 +12664,11 @@ final class TreasuryOutboundPaymentFailedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10339,6 +12688,8 @@ final class TreasuryOutboundPaymentPostedEvent implements StripeEvent {
 
   final TreasuryOutboundPayment object;
 
+  final String type = 'treasury.outbound_payment.posted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10352,6 +12703,10 @@ final class TreasuryOutboundPaymentPostedEvent implements StripeEvent {
     TreasuryOutboundPayment.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.outbound_payment.posted',
     );
     return container.value;
   }
@@ -10368,6 +12723,11 @@ final class TreasuryOutboundPaymentPostedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10387,6 +12747,8 @@ final class TreasuryOutboundPaymentReturnedEvent implements StripeEvent {
 
   final TreasuryOutboundPayment object;
 
+  final String type = 'treasury.outbound_payment.returned';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10400,6 +12762,10 @@ final class TreasuryOutboundPaymentReturnedEvent implements StripeEvent {
     TreasuryOutboundPayment.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.outbound_payment.returned',
     );
     return container.value;
   }
@@ -10417,6 +12783,11 @@ final class TreasuryOutboundPaymentReturnedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10436,6 +12807,8 @@ final class TreasuryOutboundTransferCanceledEvent implements StripeEvent {
 
   final TreasuryOutboundTransfer object;
 
+  final String type = 'treasury.outbound_transfer.canceled';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10449,6 +12822,10 @@ final class TreasuryOutboundTransferCanceledEvent implements StripeEvent {
     TreasuryOutboundTransfer.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.outbound_transfer.canceled',
     );
     return container.value;
   }
@@ -10466,6 +12843,11 @@ final class TreasuryOutboundTransferCanceledEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10485,6 +12867,8 @@ final class TreasuryOutboundTransferCreatedEvent implements StripeEvent {
 
   final TreasuryOutboundTransfer object;
 
+  final String type = 'treasury.outbound_transfer.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10498,6 +12882,10 @@ final class TreasuryOutboundTransferCreatedEvent implements StripeEvent {
     TreasuryOutboundTransfer.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.outbound_transfer.created',
     );
     return container.value;
   }
@@ -10515,6 +12903,11 @@ final class TreasuryOutboundTransferCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10537,6 +12930,9 @@ final class TreasuryOutboundTransferExpectedArrivalDateUpdatedEvent
 
   final TreasuryOutboundTransfer object;
 
+  final String type =
+      'treasury.outbound_transfer.expected_arrival_date_updated';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10550,6 +12946,10 @@ final class TreasuryOutboundTransferExpectedArrivalDateUpdatedEvent
     TreasuryOutboundTransfer.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.outbound_transfer.expected_arrival_date_updated',
     );
     return container.value;
   }
@@ -10567,6 +12967,11 @@ final class TreasuryOutboundTransferExpectedArrivalDateUpdatedEvent
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10586,6 +12991,8 @@ final class TreasuryOutboundTransferFailedEvent implements StripeEvent {
 
   final TreasuryOutboundTransfer object;
 
+  final String type = 'treasury.outbound_transfer.failed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10599,6 +13006,10 @@ final class TreasuryOutboundTransferFailedEvent implements StripeEvent {
     TreasuryOutboundTransfer.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.outbound_transfer.failed',
     );
     return container.value;
   }
@@ -10616,6 +13027,11 @@ final class TreasuryOutboundTransferFailedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10635,6 +13051,8 @@ final class TreasuryOutboundTransferPostedEvent implements StripeEvent {
 
   final TreasuryOutboundTransfer object;
 
+  final String type = 'treasury.outbound_transfer.posted';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10648,6 +13066,10 @@ final class TreasuryOutboundTransferPostedEvent implements StripeEvent {
     TreasuryOutboundTransfer.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.outbound_transfer.posted',
     );
     return container.value;
   }
@@ -10665,6 +13087,11 @@ final class TreasuryOutboundTransferPostedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10684,6 +13111,8 @@ final class TreasuryOutboundTransferReturnedEvent implements StripeEvent {
 
   final TreasuryOutboundTransfer object;
 
+  final String type = 'treasury.outbound_transfer.returned';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10697,6 +13126,10 @@ final class TreasuryOutboundTransferReturnedEvent implements StripeEvent {
     TreasuryOutboundTransfer.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.outbound_transfer.returned',
     );
     return container.value;
   }
@@ -10714,6 +13147,11 @@ final class TreasuryOutboundTransferReturnedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10733,6 +13171,8 @@ final class TreasuryReceivedCreditCreatedEvent implements StripeEvent {
 
   final TreasuryReceivedCredit object;
 
+  final String type = 'treasury.received_credit.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10746,6 +13186,10 @@ final class TreasuryReceivedCreditCreatedEvent implements StripeEvent {
     TreasuryReceivedCredit.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.received_credit.created',
     );
     return container.value;
   }
@@ -10762,6 +13206,11 @@ final class TreasuryReceivedCreditCreatedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10781,6 +13230,8 @@ final class TreasuryReceivedCreditFailedEvent implements StripeEvent {
 
   final TreasuryReceivedCredit object;
 
+  final String type = 'treasury.received_credit.failed';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10794,6 +13245,10 @@ final class TreasuryReceivedCreditFailedEvent implements StripeEvent {
     TreasuryReceivedCredit.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.received_credit.failed',
     );
     return container.value;
   }
@@ -10810,6 +13265,11 @@ final class TreasuryReceivedCreditFailedEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10829,6 +13289,8 @@ final class TreasuryReceivedCreditSucceededEvent implements StripeEvent {
 
   final TreasuryReceivedCredit object;
 
+  final String type = 'treasury.received_credit.succeeded';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10842,6 +13304,10 @@ final class TreasuryReceivedCreditSucceededEvent implements StripeEvent {
     TreasuryReceivedCredit.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.received_credit.succeeded',
     );
     return container.value;
   }
@@ -10859,6 +13325,11 @@ final class TreasuryReceivedCreditSucceededEvent implements StripeEvent {
       ..writeln()
       ..write('  object: ')
       ..write(object)
+      ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
       ..write(',');
     $buf.write(')');
     return $buf.toString();
@@ -10878,6 +13349,8 @@ final class TreasuryReceivedDebitCreatedEvent implements StripeEvent {
 
   final TreasuryReceivedDebit object;
 
+  final String type = 'treasury.received_debit.created';
+
   Map<String, Object?> toJson() => (encode(
         this,
         coder.json.encoder,
@@ -10891,6 +13364,10 @@ final class TreasuryReceivedDebitCreatedEvent implements StripeEvent {
     TreasuryReceivedDebit.encode(
       instance.object,
       container.nestedSingleValueContainer('object').encoder,
+    );
+    container.encodeString(
+      'type',
+      'treasury.received_debit.created',
     );
     return container.value;
   }
@@ -10908,7 +13385,329 @@ final class TreasuryReceivedDebitCreatedEvent implements StripeEvent {
       ..write('  object: ')
       ..write(object)
       ..write(',');
+    $buf
+      ..writeln()
+      ..write('  type: ')
+      ..write(type)
+      ..write(',');
     $buf.write(')');
     return $buf.toString();
   }
+}
+
+sealed class StripeEvent {
+  const StripeEvent();
+
+  factory StripeEvent.fromJson(Object? json) {
+    final map = (json as Map).cast<String, Object?>();
+    final type = (map['type'] as String);
+    final factory = $mapping[type];
+    if (factory == null) {
+      throw ArgumentError('Unknown type of StripeEvent: "$type"');
+    }
+    return factory(map);
+  }
+
+  static const Map<String, StripeEvent Function(Object?)> $mapping = {
+    'account.application.authorized':
+        AccountApplicationDeauthorizedEvent.fromJson,
+    'account.application.deauthorized':
+        AccountApplicationDeauthorizedEvent.fromJson,
+    'account.external_account.created': CustomerSourceUpdatedEvent.fromJson,
+    'account.external_account.deleted': CustomerSourceUpdatedEvent.fromJson,
+    'account.external_account.updated': CustomerSourceUpdatedEvent.fromJson,
+    'account.updated': AccountUpdatedEvent.fromJson,
+    'application_fee.created': ApplicationFeeRefundedEvent.fromJson,
+    'application_fee.refund.updated': ApplicationFeeRefundUpdatedEvent.fromJson,
+    'application_fee.refunded': ApplicationFeeRefundedEvent.fromJson,
+    'balance.available': BalanceAvailableEvent.fromJson,
+    'billing_portal.configuration.created':
+        BillingPortalConfigurationUpdatedEvent.fromJson,
+    'billing_portal.configuration.updated':
+        BillingPortalConfigurationUpdatedEvent.fromJson,
+    'billing_portal.session.created': BillingPortalSessionCreatedEvent.fromJson,
+    'capability.updated': CapabilityUpdatedEvent.fromJson,
+    'cash_balance.funds_available': CashBalanceFundsAvailableEvent.fromJson,
+    'charge.captured': ChargeUpdatedEvent.fromJson,
+    'charge.dispute.closed': ChargeDisputeUpdatedEvent.fromJson,
+    'charge.dispute.created': ChargeDisputeUpdatedEvent.fromJson,
+    'charge.dispute.funds_reinstated': ChargeDisputeUpdatedEvent.fromJson,
+    'charge.dispute.funds_withdrawn': ChargeDisputeUpdatedEvent.fromJson,
+    'charge.dispute.updated': ChargeDisputeUpdatedEvent.fromJson,
+    'charge.expired': ChargeUpdatedEvent.fromJson,
+    'charge.failed': ChargeUpdatedEvent.fromJson,
+    'charge.pending': ChargeUpdatedEvent.fromJson,
+    'charge.refund.updated': RefundUpdatedEvent.fromJson,
+    'charge.refunded': ChargeUpdatedEvent.fromJson,
+    'charge.succeeded': ChargeUpdatedEvent.fromJson,
+    'charge.updated': ChargeUpdatedEvent.fromJson,
+    'checkout.session.async_payment_failed':
+        CheckoutSessionExpiredEvent.fromJson,
+    'checkout.session.async_payment_succeeded':
+        CheckoutSessionExpiredEvent.fromJson,
+    'checkout.session.completed': CheckoutSessionExpiredEvent.fromJson,
+    'checkout.session.expired': CheckoutSessionExpiredEvent.fromJson,
+    'climate.order.canceled': ClimateOrderProductSubstitutedEvent.fromJson,
+    'climate.order.created': ClimateOrderProductSubstitutedEvent.fromJson,
+    'climate.order.delayed': ClimateOrderProductSubstitutedEvent.fromJson,
+    'climate.order.delivered': ClimateOrderProductSubstitutedEvent.fromJson,
+    'climate.order.product_substituted':
+        ClimateOrderProductSubstitutedEvent.fromJson,
+    'climate.product.created': ClimateProductPricingUpdatedEvent.fromJson,
+    'climate.product.pricing_updated':
+        ClimateProductPricingUpdatedEvent.fromJson,
+    'coupon.created': CouponUpdatedEvent.fromJson,
+    'coupon.deleted': CouponUpdatedEvent.fromJson,
+    'coupon.updated': CouponUpdatedEvent.fromJson,
+    'credit_note.created': CreditNoteVoidedEvent.fromJson,
+    'credit_note.updated': CreditNoteVoidedEvent.fromJson,
+    'credit_note.voided': CreditNoteVoidedEvent.fromJson,
+    'customer.created': CustomerUpdatedEvent.fromJson,
+    'customer.deleted': CustomerUpdatedEvent.fromJson,
+    'customer.discount.created': CustomerDiscountUpdatedEvent.fromJson,
+    'customer.discount.deleted': CustomerDiscountUpdatedEvent.fromJson,
+    'customer.discount.updated': CustomerDiscountUpdatedEvent.fromJson,
+    'customer.source.created': CustomerSourceUpdatedEvent.fromJson,
+    'customer.source.deleted': CustomerSourceUpdatedEvent.fromJson,
+    'customer.source.expiring': CustomerSourceExpiringEvent.fromJson,
+    'customer.source.updated': CustomerSourceUpdatedEvent.fromJson,
+    'customer.subscription.created': CustomerSubscriptionUpdatedEvent.fromJson,
+    'customer.subscription.deleted': CustomerSubscriptionUpdatedEvent.fromJson,
+    'customer.subscription.paused': CustomerSubscriptionUpdatedEvent.fromJson,
+    'customer.subscription.pending_update_applied':
+        CustomerSubscriptionUpdatedEvent.fromJson,
+    'customer.subscription.pending_update_expired':
+        CustomerSubscriptionUpdatedEvent.fromJson,
+    'customer.subscription.resumed': CustomerSubscriptionUpdatedEvent.fromJson,
+    'customer.subscription.trial_will_end':
+        CustomerSubscriptionUpdatedEvent.fromJson,
+    'customer.subscription.updated': CustomerSubscriptionUpdatedEvent.fromJson,
+    'customer.tax_id.created': CustomerTaxIdUpdatedEvent.fromJson,
+    'customer.tax_id.deleted': CustomerTaxIdUpdatedEvent.fromJson,
+    'customer.tax_id.updated': CustomerTaxIdUpdatedEvent.fromJson,
+    'customer.updated': CustomerUpdatedEvent.fromJson,
+    'customer_cash_balance_transaction.created':
+        CustomerCashBalanceTransactionCreatedEvent.fromJson,
+    'file.created': FileCreatedEvent.fromJson,
+    'financial_connections.account.created':
+        FinancialConnectionsAccountRefreshedTransactionsEvent.fromJson,
+    'financial_connections.account.deactivated':
+        FinancialConnectionsAccountRefreshedTransactionsEvent.fromJson,
+    'financial_connections.account.disconnected':
+        FinancialConnectionsAccountRefreshedTransactionsEvent.fromJson,
+    'financial_connections.account.reactivated':
+        FinancialConnectionsAccountRefreshedTransactionsEvent.fromJson,
+    'financial_connections.account.refreshed_balance':
+        FinancialConnectionsAccountRefreshedTransactionsEvent.fromJson,
+    'financial_connections.account.refreshed_ownership':
+        FinancialConnectionsAccountRefreshedTransactionsEvent.fromJson,
+    'financial_connections.account.refreshed_transactions':
+        FinancialConnectionsAccountRefreshedTransactionsEvent.fromJson,
+    'identity.verification_session.canceled':
+        IdentityVerificationSessionVerifiedEvent.fromJson,
+    'identity.verification_session.created':
+        IdentityVerificationSessionVerifiedEvent.fromJson,
+    'identity.verification_session.processing':
+        IdentityVerificationSessionVerifiedEvent.fromJson,
+    'identity.verification_session.redacted':
+        IdentityVerificationSessionVerifiedEvent.fromJson,
+    'identity.verification_session.requires_input':
+        IdentityVerificationSessionVerifiedEvent.fromJson,
+    'identity.verification_session.verified':
+        IdentityVerificationSessionVerifiedEvent.fromJson,
+    'invoice.created': InvoiceVoidedEvent.fromJson,
+    'invoice.deleted': InvoiceVoidedEvent.fromJson,
+    'invoice.finalization_failed': InvoiceVoidedEvent.fromJson,
+    'invoice.finalized': InvoiceVoidedEvent.fromJson,
+    'invoice.marked_uncollectible': InvoiceVoidedEvent.fromJson,
+    'invoice.paid': InvoiceVoidedEvent.fromJson,
+    'invoice.payment_action_required': InvoiceVoidedEvent.fromJson,
+    'invoice.payment_failed': InvoiceVoidedEvent.fromJson,
+    'invoice.payment_succeeded': InvoiceVoidedEvent.fromJson,
+    'invoice.sent': InvoiceVoidedEvent.fromJson,
+    'invoice.upcoming': InvoiceVoidedEvent.fromJson,
+    'invoice.updated': InvoiceVoidedEvent.fromJson,
+    'invoice.voided': InvoiceVoidedEvent.fromJson,
+    'invoiceitem.created': InvoiceitemDeletedEvent.fromJson,
+    'invoiceitem.deleted': InvoiceitemDeletedEvent.fromJson,
+    'issuing_authorization.created': IssuingAuthorizationUpdatedEvent.fromJson,
+    'issuing_authorization.request': IssuingAuthorizationUpdatedEvent.fromJson,
+    'issuing_authorization.updated': IssuingAuthorizationUpdatedEvent.fromJson,
+    'issuing_card.created': IssuingCardUpdatedEvent.fromJson,
+    'issuing_card.updated': IssuingCardUpdatedEvent.fromJson,
+    'issuing_cardholder.created': IssuingCardholderUpdatedEvent.fromJson,
+    'issuing_cardholder.updated': IssuingCardholderUpdatedEvent.fromJson,
+    'issuing_dispute.closed': IssuingDisputeUpdatedEvent.fromJson,
+    'issuing_dispute.created': IssuingDisputeUpdatedEvent.fromJson,
+    'issuing_dispute.funds_reinstated': IssuingDisputeUpdatedEvent.fromJson,
+    'issuing_dispute.submitted': IssuingDisputeUpdatedEvent.fromJson,
+    'issuing_dispute.updated': IssuingDisputeUpdatedEvent.fromJson,
+    'issuing_token.created': IssuingTokenUpdatedEvent.fromJson,
+    'issuing_token.updated': IssuingTokenUpdatedEvent.fromJson,
+    'issuing_transaction.created': IssuingTransactionUpdatedEvent.fromJson,
+    'issuing_transaction.updated': IssuingTransactionUpdatedEvent.fromJson,
+    'mandate.updated': MandateUpdatedEvent.fromJson,
+    'payment_intent.amount_capturable_updated':
+        PaymentIntentSucceededEvent.fromJson,
+    'payment_intent.canceled': PaymentIntentSucceededEvent.fromJson,
+    'payment_intent.created': PaymentIntentSucceededEvent.fromJson,
+    'payment_intent.partially_funded': PaymentIntentSucceededEvent.fromJson,
+    'payment_intent.payment_failed': PaymentIntentSucceededEvent.fromJson,
+    'payment_intent.processing': PaymentIntentSucceededEvent.fromJson,
+    'payment_intent.requires_action': PaymentIntentSucceededEvent.fromJson,
+    'payment_intent.succeeded': PaymentIntentSucceededEvent.fromJson,
+    'payment_link.created': PaymentLinkUpdatedEvent.fromJson,
+    'payment_link.updated': PaymentLinkUpdatedEvent.fromJson,
+    'payment_method.attached': PaymentMethodUpdatedEvent.fromJson,
+    'payment_method.automatically_updated': PaymentMethodUpdatedEvent.fromJson,
+    'payment_method.detached': PaymentMethodUpdatedEvent.fromJson,
+    'payment_method.updated': PaymentMethodUpdatedEvent.fromJson,
+    'payout.canceled': PayoutUpdatedEvent.fromJson,
+    'payout.created': PayoutUpdatedEvent.fromJson,
+    'payout.failed': PayoutUpdatedEvent.fromJson,
+    'payout.paid': PayoutUpdatedEvent.fromJson,
+    'payout.reconciliation_completed': PayoutUpdatedEvent.fromJson,
+    'payout.updated': PayoutUpdatedEvent.fromJson,
+    'person.created': PersonUpdatedEvent.fromJson,
+    'person.deleted': PersonUpdatedEvent.fromJson,
+    'person.updated': PersonUpdatedEvent.fromJson,
+    'plan.created': PlanUpdatedEvent.fromJson,
+    'plan.deleted': PlanUpdatedEvent.fromJson,
+    'plan.updated': PlanUpdatedEvent.fromJson,
+    'price.created': PriceUpdatedEvent.fromJson,
+    'price.deleted': PriceUpdatedEvent.fromJson,
+    'price.updated': PriceUpdatedEvent.fromJson,
+    'product.created': ProductUpdatedEvent.fromJson,
+    'product.deleted': ProductUpdatedEvent.fromJson,
+    'product.updated': ProductUpdatedEvent.fromJson,
+    'promotion_code.created': PromotionCodeUpdatedEvent.fromJson,
+    'promotion_code.updated': PromotionCodeUpdatedEvent.fromJson,
+    'quote.accepted': QuoteFinalizedEvent.fromJson,
+    'quote.canceled': QuoteFinalizedEvent.fromJson,
+    'quote.created': QuoteFinalizedEvent.fromJson,
+    'quote.finalized': QuoteFinalizedEvent.fromJson,
+    'radar.early_fraud_warning.created':
+        RadarEarlyFraudWarningUpdatedEvent.fromJson,
+    'radar.early_fraud_warning.updated':
+        RadarEarlyFraudWarningUpdatedEvent.fromJson,
+    'refund.created': RefundUpdatedEvent.fromJson,
+    'refund.updated': RefundUpdatedEvent.fromJson,
+    'reporting.report_run.failed': ReportingReportRunSucceededEvent.fromJson,
+    'reporting.report_run.succeeded': ReportingReportRunSucceededEvent.fromJson,
+    'reporting.report_type.updated': ReportingReportTypeUpdatedEvent.fromJson,
+    'review.closed': ReviewOpenedEvent.fromJson,
+    'review.opened': ReviewOpenedEvent.fromJson,
+    'setup_intent.canceled': SetupIntentSucceededEvent.fromJson,
+    'setup_intent.created': SetupIntentSucceededEvent.fromJson,
+    'setup_intent.requires_action': SetupIntentSucceededEvent.fromJson,
+    'setup_intent.setup_failed': SetupIntentSucceededEvent.fromJson,
+    'setup_intent.succeeded': SetupIntentSucceededEvent.fromJson,
+    'sigma.scheduled_query_run.created':
+        SigmaScheduledQueryRunCreatedEvent.fromJson,
+    'source.canceled': SourceRefundAttributesRequiredEvent.fromJson,
+    'source.chargeable': SourceRefundAttributesRequiredEvent.fromJson,
+    'source.failed': SourceRefundAttributesRequiredEvent.fromJson,
+    'source.mandate_notification': SourceMandateNotificationEvent.fromJson,
+    'source.refund_attributes_required':
+        SourceRefundAttributesRequiredEvent.fromJson,
+    'source.transaction.created': SourceTransactionUpdatedEvent.fromJson,
+    'source.transaction.updated': SourceTransactionUpdatedEvent.fromJson,
+    'subscription_schedule.aborted': SubscriptionScheduleUpdatedEvent.fromJson,
+    'subscription_schedule.canceled': SubscriptionScheduleUpdatedEvent.fromJson,
+    'subscription_schedule.completed':
+        SubscriptionScheduleUpdatedEvent.fromJson,
+    'subscription_schedule.created': SubscriptionScheduleUpdatedEvent.fromJson,
+    'subscription_schedule.expiring': SubscriptionScheduleUpdatedEvent.fromJson,
+    'subscription_schedule.released': SubscriptionScheduleUpdatedEvent.fromJson,
+    'subscription_schedule.updated': SubscriptionScheduleUpdatedEvent.fromJson,
+    'tax.settings.updated': TaxSettingsUpdatedEvent.fromJson,
+    'tax_rate.created': TaxRateUpdatedEvent.fromJson,
+    'tax_rate.updated': TaxRateUpdatedEvent.fromJson,
+    'terminal.reader.action_failed':
+        TerminalReaderActionSucceededEvent.fromJson,
+    'terminal.reader.action_succeeded':
+        TerminalReaderActionSucceededEvent.fromJson,
+    'test_helpers.test_clock.advancing':
+        TestHelpersTestClockReadyEvent.fromJson,
+    'test_helpers.test_clock.created': TestHelpersTestClockReadyEvent.fromJson,
+    'test_helpers.test_clock.deleted': TestHelpersTestClockReadyEvent.fromJson,
+    'test_helpers.test_clock.internal_failure':
+        TestHelpersTestClockReadyEvent.fromJson,
+    'test_helpers.test_clock.ready': TestHelpersTestClockReadyEvent.fromJson,
+    'topup.canceled': TopupSucceededEvent.fromJson,
+    'topup.created': TopupSucceededEvent.fromJson,
+    'topup.failed': TopupSucceededEvent.fromJson,
+    'topup.reversed': TopupSucceededEvent.fromJson,
+    'topup.succeeded': TopupSucceededEvent.fromJson,
+    'transfer.created': TransferUpdatedEvent.fromJson,
+    'transfer.reversed': TransferUpdatedEvent.fromJson,
+    'transfer.updated': TransferUpdatedEvent.fromJson,
+    'treasury.credit_reversal.created':
+        TreasuryCreditReversalPostedEvent.fromJson,
+    'treasury.credit_reversal.posted':
+        TreasuryCreditReversalPostedEvent.fromJson,
+    'treasury.debit_reversal.completed':
+        TreasuryDebitReversalInitialCreditGrantedEvent.fromJson,
+    'treasury.debit_reversal.created':
+        TreasuryDebitReversalInitialCreditGrantedEvent.fromJson,
+    'treasury.debit_reversal.initial_credit_granted':
+        TreasuryDebitReversalInitialCreditGrantedEvent.fromJson,
+    'treasury.financial_account.closed':
+        TreasuryFinancialAccountFeaturesStatusUpdatedEvent.fromJson,
+    'treasury.financial_account.created':
+        TreasuryFinancialAccountFeaturesStatusUpdatedEvent.fromJson,
+    'treasury.financial_account.features_status_updated':
+        TreasuryFinancialAccountFeaturesStatusUpdatedEvent.fromJson,
+    'treasury.inbound_transfer.canceled':
+        TreasuryInboundTransferSucceededEvent.fromJson,
+    'treasury.inbound_transfer.created':
+        TreasuryInboundTransferSucceededEvent.fromJson,
+    'treasury.inbound_transfer.failed':
+        TreasuryInboundTransferSucceededEvent.fromJson,
+    'treasury.inbound_transfer.succeeded':
+        TreasuryInboundTransferSucceededEvent.fromJson,
+    'treasury.outbound_payment.canceled':
+        TreasuryOutboundPaymentReturnedEvent.fromJson,
+    'treasury.outbound_payment.created':
+        TreasuryOutboundPaymentReturnedEvent.fromJson,
+    'treasury.outbound_payment.expected_arrival_date_updated':
+        TreasuryOutboundPaymentReturnedEvent.fromJson,
+    'treasury.outbound_payment.failed':
+        TreasuryOutboundPaymentReturnedEvent.fromJson,
+    'treasury.outbound_payment.posted':
+        TreasuryOutboundPaymentReturnedEvent.fromJson,
+    'treasury.outbound_payment.returned':
+        TreasuryOutboundPaymentReturnedEvent.fromJson,
+    'treasury.outbound_transfer.canceled':
+        TreasuryOutboundTransferReturnedEvent.fromJson,
+    'treasury.outbound_transfer.created':
+        TreasuryOutboundTransferReturnedEvent.fromJson,
+    'treasury.outbound_transfer.expected_arrival_date_updated':
+        TreasuryOutboundTransferReturnedEvent.fromJson,
+    'treasury.outbound_transfer.failed':
+        TreasuryOutboundTransferReturnedEvent.fromJson,
+    'treasury.outbound_transfer.posted':
+        TreasuryOutboundTransferReturnedEvent.fromJson,
+    'treasury.outbound_transfer.returned':
+        TreasuryOutboundTransferReturnedEvent.fromJson,
+    'treasury.received_credit.created':
+        TreasuryReceivedCreditSucceededEvent.fromJson,
+    'treasury.received_credit.failed':
+        TreasuryReceivedCreditSucceededEvent.fromJson,
+    'treasury.received_credit.succeeded':
+        TreasuryReceivedCreditSucceededEvent.fromJson,
+    'treasury.received_debit.created':
+        TreasuryReceivedDebitCreatedEvent.fromJson,
+  };
+
+  String get type;
+  Map<String, Object?> toJson();
+  static V encode<V>(
+    StripeEvent instance,
+    Encoder<V> encoder,
+  ) {
+    return instance.encodeWith(encoder);
+  }
+
+  V encodeWith<V>(Encoder<V> encoder);
 }
