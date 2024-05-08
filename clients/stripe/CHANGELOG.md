@@ -1,3 +1,7 @@
+## 0.1.3
+
+- chore: Add security considerations to README
+
 ## 0.1.2
 
 - feat: Add `StripeWebhookValidator` for validating incoming webhook requests.
