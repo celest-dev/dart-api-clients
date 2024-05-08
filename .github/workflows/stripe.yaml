@@ -1,0 +1,35 @@
+name: Stripe
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/stripe.yaml"
+      - "clients/stripe/**"
+
+# Prevent duplicate runs due to Graphite
+# https://graphite.dev/docs/troubleshooting#why-are-my-actions-running-twice
+concurrency:
+  group: ${{ github.repository }}-${{ github.workflow }}-${{ github.ref }}-${{ github.ref == 'refs/heads/main' && github.sha || ''}}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@44c2b7a8a4ea60a981eaca3cf939b5f4305c123b # 4.1.5
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@f0ead981b4d9a35b37f30d36160575d60931ec30 # main
+      - name: Install Stripe Mock
+        run: |
+          VERSION=0.183.0
+          URL=https://github.com/stripe/stripe-mock/releases/download/v${VERSION}/stripe-mock_${VERSION}_linux_amd64.deb
+          DEB=/tmp/stripe-mock.deb
+          curl -Lo $DEB $URL
+          sudo dpkg -i $DEB
+      - name: Get Packages
+        working-directory: clients/stripe
+        run: dart pub get
+      - name: Test
+        working-directory: clients/stripe
+        run: dart test --fail-fast
