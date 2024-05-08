@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:checks/checks.dart';
-import 'package:client_stripe/client.dart';
+import 'package:client_stripe/client_stripe.dart';
 import 'package:client_stripe/models.dart' hide File;
 import 'package:cross_file/cross_file.dart';
 import 'package:json_annotation/json_annotation.dart';

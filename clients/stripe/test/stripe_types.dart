@@ -1,5 +1,5 @@
 import 'package:checks/checks.dart';
-import 'package:client_stripe/client.dart';
+import 'package:client_stripe/client_stripe.dart';
 import 'package:client_stripe/models.dart';
 import 'package:test/test.dart';
 
