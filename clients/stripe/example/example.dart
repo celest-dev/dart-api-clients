@@ -1,4 +1,4 @@
-import 'package:client_stripe/client.dart';
+import 'package:client_stripe/client_stripe.dart';
 import 'package:client_stripe/models.dart';
 
 Future<void> main() async {
