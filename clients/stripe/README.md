@@ -6,6 +6,10 @@ This package provides a Dart API for interacting with the Stripe REST API. As be
 
 The package is generated from Stripe's [OpenAPI specification](https://github.com/stripe/openapi), specifically `spec3.sdk.json`.
 
+### Security Considerations
+
+While this package can run in both client and server environments, it is **strongly** recommended to only ever use it on the server. Your Stripe API key should never be available to the client for risk of it leaking. This package was made to work in client-side environments strictly for the purposes of mocking and proxying.
+
 ## Usage
 
 ```dart
