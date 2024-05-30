@@ -1,6 +1,6 @@
 name: client_stripe
 description: An idiomatic Dart wrapper for the Stripe REST API.
-version: 0.1.3
+version: 0.1.4
 repository: https://github.com/celest-dev/dart-api-clients/tree/main/clients/stripe
 
 environment:
@@ -18,9 +18,13 @@ dependencies:
   meta: ^1.10.0
 
 dev_dependencies:
+  async: ^2.11.0
   build_runner: ^2.4.9
   checks: ^0.3.0
   json_annotation: ^4.8.1
   json_serializable: ^6.7.1
-  lints: ">=3.0.0 <5.0.0"
+  lints: ^4.0.0
+  shelf: ^1.4.1
+  shelf_router: ^1.1.4
+  stream_transform: ^2.1.0
   test: ^1.24.0
