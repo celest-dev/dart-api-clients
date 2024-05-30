@@ -20,6 +20,13 @@ jobs:
         uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # 4.1.6
       - name: Setup Dart
         uses: dart-lang/setup-dart@f0ead981b4d9a35b37f30d36160575d60931ec30 # main
+        # From: https://docs.stripe.com/stripe-cli#install
+      - name: Install Stripe CLI
+        run: |
+          VERSION=1.19.5
+          curl -Lo stripe.tar.gz https://github.com/stripe/stripe-cli/releases/download/v${VERSION}/stripe_${VERSION}_linux_x86_64.tar.gz
+          tar xvf stripe.tar.gz
+          sudo mv stripe /usr/local/bin/
       - name: Install Stripe Mock
         run: |
           VERSION=0.183.0
@@ -32,4 +39,6 @@ jobs:
         run: dart pub get
       - name: Test
         working-directory: clients/stripe
-        run: dart test --fail-fast
+        run: dart test --chain-stack-traces --fail-fast --concurrency=1
+        env:
+          STRIPE_API_KEY: ${{ secrets.STRIPE_TEST_API_KEY }}

@@ -1,3 +1,8 @@
+## 0.1.4
+
+- fix: Event deserialization
+- test: Add E2E webhook tests for event types
+
 ## 0.1.3
 
 - chore: Add security considerations to README
