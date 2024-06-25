@@ -17,7 +17,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Git Checkout
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # 4.1.6
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # 4.1.7
       - name: Setup Dart
         uses: dart-lang/setup-dart@f0ead981b4d9a35b37f30d36160575d60931ec30 # main
         # From: https://docs.stripe.com/stripe-cli#install
