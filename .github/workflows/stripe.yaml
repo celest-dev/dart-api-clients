@@ -23,10 +23,11 @@ jobs:
         # From: https://docs.stripe.com/stripe-cli#install
       - name: Install Stripe CLI
         run: |
-          VERSION=1.19.5
+          VERSION=1.21.2
           curl -Lo stripe.tar.gz https://github.com/stripe/stripe-cli/releases/download/v${VERSION}/stripe_${VERSION}_linux_x86_64.tar.gz
           tar xvf stripe.tar.gz
           sudo mv stripe /usr/local/bin/
+      # TODO: Update when OpenAPI specs are updated in client
       - name: Install Stripe Mock
         run: |
           VERSION=0.183.0
