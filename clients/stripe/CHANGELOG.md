@@ -1,3 +1,7 @@
+## 0.1.5-wip
+
+- chore: Update dependencies
+
 ## 0.1.4
 
 - fix: Event deserialization
