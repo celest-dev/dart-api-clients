@@ -23,7 +23,7 @@ dev_dependencies:
   checks: ^0.3.0
   json_annotation: ^4.8.1
   json_serializable: ^6.7.1
-  lints: ^4.0.0
+  lints: ">=4.0.0 <6.0.0"
   shelf: ^1.4.1
   shelf_router: ^1.1.4
   stream_transform: ^2.1.0
